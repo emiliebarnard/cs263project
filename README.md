@@ -8,7 +8,7 @@ From Google Developer:
 
 Congratulations! Your project is ready. Your unique project ID is gold-box-728.
 
-Deploy your app from your local dev environment using this command:
+Deploy your app from your local dev environment using this command (make sure you're in the app engine folder first):
 
 appcfg.sh -A gold-box-728 update target/appengine-try-java-1.0
 After deploying your app, you can visit it with your browser at this URL:
