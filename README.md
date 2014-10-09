@@ -3,6 +3,7 @@ cs263project
 
 Repo for my course project for CS 263: Programming Language Runtime Systems at UC Santa Barbara.
 
+------------
 
 NOTES:
 
@@ -19,3 +20,6 @@ After deploying your app, you can visit it with your browser at this URL:
 gold-box-728.appspot.com
 
 That's it! You're running on Google App Engine. Go to your project dashboard to see how your app is performing.
+
+------------
+This link is extremely helpful for getting the Google app engine set up in Eclipse: http://www.mkyong.com/google-app-engine/google-app-engine-hello-world-example-using-eclipse/
