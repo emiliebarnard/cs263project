@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+<deps cu="=TaskEngine/src&lt;com.google.appengine.demos.taskengine.client{TaskDetails.java">
+<res path="resources/TaskDetails.css"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/back.png"/>
+<res path="resources/back.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/TaskDetails.css"/>
+</deps>
+<deps cu="=TaskEngine/src&lt;com.google.appengine.demos.taskengine.client{TaskList.java">
+<res path="resources/TaskList.css"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/checkBox.png"/>
+<res path="resources/checkBox.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/check.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/garbage.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/plus.png"/>
+<res path="resources/check.png"/>
+<res path="resources/garbage.png"/>
+<res path="resources/plus.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/TaskList.css"/>
+</deps>
+<deps cu="=TaskEngine/src&lt;com.google.appengine.demos.taskengine.client{ControlBar.java">
+<res path="resources/ControlBar.css"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/logo.png"/>
+<res path="resources/logo.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/topBarBg.png"/>
+<res path="resources/topBarBg.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/ControlBar.css"/>
+</deps>
+<deps cu="=TaskEngine/src&lt;com.google.appengine.demos.taskengine.client{LabelMatrix.java">
+<res path="com/google/appengine/demos/taskengine/client/resources/important.png"/>
+<res path="resources/important.png"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/LabelMatrix.css"/>
+<res path="resources/LabelMatrix.css"/>
+<res path="com/google/appengine/demos/taskengine/client/resources/not_important.png"/>
+<res path="resources/not_important.png"/>
+</deps>
+</index>

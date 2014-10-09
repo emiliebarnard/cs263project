@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="appengine-try-java">
+        <property name="context-root" value="appengine-try-java"/>
+        <property name="java-output-path" value="/appengine-try-java/target/appengine-try-java/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>
