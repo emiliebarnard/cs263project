@@ -1,0 +1,123 @@
+'\" t
+.TH "GCLOUD\-COMPUTE\-INSTANCES\-REMOVE\-TAGS" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-compute-instances-remove-tags \- Remove tags from Google Compute Engine virtual machine instances
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud compute instances remove\-tags\fR
+  NAME
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-\-all | \-\-tags TAG [TAG \&...]]
+  [\-\-zone ZONE]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute instances remove\-tags\fR is used to remove tags to Google Compute Engine virtual machine instances\&. For example:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute instances remove\-tags my\-instance \-\-tags tag\-1 tag\-2
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+will remove tags \(lqtag\-1\(rq and \(lqtag\-2\(rq from the existing tags of \(lqmy\-instance\(rq\&.
+.sp
+Tags can be used to identify instances when adding network firewall rules\&. Tags can also be used to get firewall rules that already exist to be applied to the instance\&. See \fBgcloud\-compute\-firewalls\-create(1)\fR for more details\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the instance whose tags should be modified\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-all\fR
+.RS 4
+Remove all tags from the instance\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-tags\fR \fITAG [TAG \&...]\fR
+.RS 4
+Specifies strings to be removed from the instance tags\&. Multiple tags can be removed by repeating this flag\&.
+.RE
+.PP
+\fB\-\-zone\fR \fIZONE\fR
+.RS 4
+The zone of the instance to set tags on\&. If not specified, you will be prompted to select a zone\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the \(lqcompute/zone\(rq property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud config set compute/zone ZONE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of zones can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud compute zones list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud config unset compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the zone can be stored in the environment variable \(lqCLOUDSDK_COMPUTE_ZONE\(rq\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE

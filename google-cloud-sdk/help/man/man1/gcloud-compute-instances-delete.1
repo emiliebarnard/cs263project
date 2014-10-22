@@ -1,0 +1,111 @@
+'\" t
+.TH "GCLOUD\-COMPUTE\-INSTANCES\-DELETE" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-compute-instances-delete \- Delete Google Compute Engine virtual machine instances
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud compute instances delete\fR
+  NAME [NAME \&...]
+  [\-\-delete\-disks {boot,data,all} | \-\-keep\-disks {boot,data,all}]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-\-zone ZONE]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute instances delete\fR deletes one or more Google Compute Engine virtual machine instances\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME [NAME \&...]\fR
+.RS 4
+The instances to delete\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-delete\-disks\fR \fI{boot,data,all}\fR
+.RS 4
+The types of disks to delete with instance deletion regardless of the disks\*(Aq auto\-delete configuration\&. When this flag is provided, the auto\-delete bits on the attached disks are modified accordingly before the instance deletion requests are issued\&. For more information on disk auto\-deletion, see
+https://developers\&.google\&.com/compute/docs/disks#updateautodelete\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-keep\-disks\fR \fI{boot,data,all}\fR
+.RS 4
+The types of disks to not delete with instance deletion regardless of the disks\*(Aq auto\-delete configuration\&. When this flag is provided, the auto\-delete bits on the attached disks are modified accordingly before the instance deletion requests are issued\&. For more information on disk auto\-deletion, see
+https://developers\&.google\&.com/compute/docs/disks#updateautodelete\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-zone\fR \fIZONE\fR
+.RS 4
+The zone of the instances to delete\&. If not specified, you will be prompted to select a zone\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the \(lqcompute/zone\(rq property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud config set compute/zone ZONE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of zones can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud compute zones list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud config unset compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the zone can be stored in the environment variable \(lqCLOUDSDK_COMPUTE_ZONE\(rq\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE

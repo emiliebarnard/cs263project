@@ -1,0 +1,67 @@
+'\" t
+.TH "GCLOUD\-COMPONENTS\-REMOVE" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-components-remove \- Uninstall all listed components, as well as all components that directly or indirectly depend on them\&.
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud components remove\fR
+  COMPONENT\-ID [COMPONENT\-ID \&...]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+Uninstall all listed components, as well as all components that directly or indirectly depend on them\&. For example, if the component unicorn\-factory depends on the component horn\-factory, removing horn\-factory will cause unicorn\-factory to be removed as well\&. The command lists all components it is about to remove, and asks for confirmation before proceeding\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fICOMPONENT\-ID [COMPONENT\-ID \&...]\fR
+.RS 4
+The IDs of the components to be removed\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To remove component\-1, component\-2, and all components that directly or indirectly depend on component\-1 or component\-2, type the following:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud components remove component\-1 component\-2
+.fi
+.if n \{\
+.RE
+.\}

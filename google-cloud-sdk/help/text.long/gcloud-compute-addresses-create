@@ -1,0 +1,104 @@
+NAME
+       gcloud-compute-addresses-create - Reserve IP addresses
+
+SYNOPSIS
+       gcloud compute addresses create
+         [NAME ...]
+         [--addresses ADDRESS [ADDRESS ...]]
+         [--description DESCRIPTION]
+         [--format FORMAT]
+         [--help]
+         [--project PROJECT]
+         [--quiet, -q]
+         [--global | --region REGION]
+         [-h]
+
+DESCRIPTION
+       gcloud compute addresses create is used to reserve one or more IP
+       addresses. Once an IP address is reserved, it will be associated with
+       the project until it is released using gcloud compute addresses delete.
+       Ephemeral IP addresses that are in use by resources in the project, can
+       be reserved using the "--addresses" flag.
+
+POSITIONAL ARGUMENTS
+       [NAME ...]
+           The names to assign to the reserved IP addresses.
+
+FLAGS
+       --addresses ADDRESS [ADDRESS ...]
+           Ephemeral IP addresses to promote to reserved status. Only
+           addresses that are being used by resources in the project can be
+           promoted. When providing this flag, a parallel list of names for
+           the addresses can be provided. For example,
+
+               $ gcloud compute addresses create my-address-1 my-address-2 \
+                   --addresses 162.222.181.197 162.222.181.198 \
+                   --region us-central1
+
+       will result in 162.222.181.197 being reserved as "my-address-1" and
+       162.222.181.198 as "my-address-2". If no names are given,
+       randomly-generated names will be assigned to the IP addresses.
+
+       --description DESCRIPTION
+           An optional textual description for the addresses.
+
+       --format FORMAT
+           Specify a format for printed output. By default, a command-specific
+           human-friendly output format is used. Setting this flag to one of
+           the available options will serialize the result of the command in
+           the chosen format and print it to stdout. Supported formats are:
+           "json", "text", "yaml".
+
+       --global
+           If provided, it is assumed the addresses are global.
+
+       --help
+           Display detailed help.
+
+       --project PROJECT
+           Google Cloud Platform project to use for this invocation.
+
+       --quiet
+           Disable all interactive prompts when running gcloud commands. If
+           input is required, defaults will be used, or an error will be
+           raised.
+
+       --region REGION
+           The region of the address to operate on. If not specified, you will
+           be prompted to select a region.
+
+           To avoid prompting when this flag is omitted, you can set the
+           "compute/region" property:
+
+               gcloud config set compute/region REGION
+
+           A list of regions can fetched by running:
+
+               gcloud compute regions list
+
+           To unset the property, run:
+
+               gcloud config unset compute/region
+
+           Alternatively, the region can be stored in the environment variable
+           "CLOUDSDK_COMPUTE_REGION".
+
+       -h
+           Print a summary help and exit.
+
+EXAMPLES
+       To reserve three IP addresses in the "us-central1" region, run:
+
+           $ gcloud compute addresses create my-address-1 my-address-2 my-address-3 \
+               --region us-central1
+
+       To reserve ephemeral IP addresses 162.222.181.198 and 23.251.146.189
+       which are being used by virtual machine instances in the "us-central1"
+       region, run:
+
+           $ gcloud compute addresses create --addresses 162.222.181.198 23.251.146.189 \
+               --region us-central1
+
+       In the above invocation, the two addresses will be assigned random
+       names.
+

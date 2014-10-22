@@ -1,0 +1,57 @@
+'\" t
+.TH "GCLOUD\-AUTH\-REVOKE" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-auth-revoke \- Revoke credentials\&. If no account is provided, the currently active account is used\&.
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud auth revoke\fR
+  [ACCOUNTS \&...]
+  [\-\-all]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fI[ACCOUNTS \&...]\fR
+.RS 4
+Accounts whose credentials shall be revoked\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-all\fR
+.RS 4
+Revoke all known credentials\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE

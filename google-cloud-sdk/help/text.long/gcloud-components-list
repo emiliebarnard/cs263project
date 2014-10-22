@@ -1,0 +1,56 @@
+NAME
+       gcloud-components-list - List all packages and individual components in
+       the Cloud SDK and provide information such as whether the component is
+       installed on the local workstation, whether a newer version is
+       available, the size of the component, and the ID used to refer to the
+       component in commands.
+
+SYNOPSIS
+       gcloud components list
+         [--format FORMAT]
+         [--help]
+         [--project PROJECT]
+         [--quiet, -q]
+         [--show-versions]
+         [-h]
+
+DESCRIPTION
+       This command lists all the tools in the Cloud SDK (both individual
+       components and preconfigured packages of components). For each
+       component, the command lists the following information: * Status on
+       your local workstation: not installed, installed (and up to date), and
+       update available (installed, but not up to date) * Name of the
+       component (a description) * ID of the component (used to refer to the
+       component in other [gcloud components] commands) * Size of the
+       component In addition, if the --show-versions flag is specified, the
+       command lists the currently installed version (if any) and the latest
+       available version of each individual component.
+
+FLAGS
+       --format FORMAT
+           Specify a format for printed output. By default, a command-specific
+           human-friendly output format is used. Setting this flag to one of
+           the available options will serialize the result of the command in
+           the chosen format and print it to stdout. Supported formats are:
+           "json", "text", "yaml".
+
+       --help
+           Display detailed help.
+
+       --project PROJECT
+           Google Cloud Platform project to use for this invocation.
+
+       --quiet
+           Disable all interactive prompts when running gcloud commands. If
+           input is required, defaults will be used, or an error will be
+           raised.
+
+       --show-versions
+           Show installed and available versions of all components.
+
+       -h
+           Print a summary help and exit.
+
+EXAMPLES
+       $ gcloud components list $ gcloud components list --show-versions
+

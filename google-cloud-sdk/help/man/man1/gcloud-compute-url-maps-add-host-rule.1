@@ -1,0 +1,88 @@
+'\" t
+.TH "GCLOUD\-COMPUTE\-URL\-MAPS\-ADD\-HOST\-RULE" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-compute-url-maps-add-host-rule \- Add a rule to a URL map to map hosts to a path matcher
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud compute url\-maps add\-host\-rule\fR
+  NAME
+  [\-\-description DESCRIPTION]
+  [\-\-format FORMAT]
+  [\-\-help]
+  \-\-hosts HOSTS [HOSTS \&...]
+  \-\-path\-matcher\-name PATH_MATCHER_NAME
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute url\-maps add\-host\-rule\fR is used to add a mapping of hosts to a patch matcher in a URL map\&. The mapping will match the host component of HTTP requests to path matchers which in turn map the request to a backend service\&. Before adding a host rule, at least one path matcher must exist in the URL map to take care of the path component of the requests\&. \fIgcloud compute url\-maps add\-path\-matcher\fR or \fIgcloud compute url\-maps edit\fR can be used to add path matchers\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the URL map\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-description\fR \fIDESCRIPTION\fR
+.RS 4
+An optional, textual description for the host rule\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-hosts\fR \fIHOSTS [HOSTS \&...]\fR
+.RS 4
+The set of hosts to match requests against\&. Each host must be a fully qualified domain name (FQDN) with the exception that the host can begin with a \(lq*\(rq or \(lq*\-\(rq\&. \(lq*\(rq acts as a glob and will match any string of atoms to the left where an atom is separated by dots (\(lq\&.\(rq) or dashes (\(lq\-\(rq)\&.
+.RE
+.PP
+\fB\-\-path\-matcher\-name\fR \fIPATH_MATCHER_NAME\fR
+.RS 4
+The name of the patch matcher to use if a request matches this host rule\&. The patch matcher must already exist in the URL map (see
+\fIgcloud compute url\-maps add\-path\-matcher\fR)\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To create a host rule mapping the \(lq*\-foo\&.google\&.com\(rq and \(lqgoogle\&.com\(rq hosts to the \(lqwww\(rq path matcher, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute url\-maps add\-host\-rule my\-url\-map \e
+    \-\-hosts *\-foo\&.google\&.com google\&.com \e
+    \-\-path\-matcher\-name www
+.fi
+.if n \{\
+.RE
+.\}

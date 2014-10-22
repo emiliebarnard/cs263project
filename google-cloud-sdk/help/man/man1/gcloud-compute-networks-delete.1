@@ -1,0 +1,54 @@
+'\" t
+.TH "GCLOUD\-COMPUTE\-NETWORKS\-DELETE" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-compute-networks-delete \- Delete Google Compute Engine networks
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud compute networks delete\fR
+  NAME [NAME \&...]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute networks delete\fR deletes one or more Google Compute Engine networks\&. Networks can only be deleted when no other resources (e\&.g\&., virtual machine instances) refer to them\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME [NAME \&...]\fR
+.RS 4
+The resources to delete\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE

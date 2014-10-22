@@ -1,0 +1,69 @@
+'\" t
+.TH "GCLOUD\-SQL\-INSTANCES\-IMPORT" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-sql-instances-import \- Imports data into a Cloud SQL instance from Google Cloud Storage\&.
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud sql instances import\fR
+  INSTANCE
+  URI [URI \&...]
+  [\-\-async]
+  [\-\-database DATABASE, \-d DATABASE]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fIINSTANCE\fR
+.RS 4
+Cloud SQL instance ID\&.
+.RE
+.PP
+\fIURI [URI \&...]\fR
+.RS 4
+Path to the MySQL dump file in Google Cloud Storage from which the import is made\&. The URI is in the form gs://bucketName/fileName\&. Compressed gzip files (\&.gz) are also supported\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-async\fR
+.RS 4
+Do not wait for the operation to complete\&.
+.RE
+.PP
+\fB\-\-database\fR \fIDATABASE\fR
+.RS 4
+The database (for example, guestbook) to which the import is made\&. If not set, it is assumed that the database is specified in the file to be imported\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE

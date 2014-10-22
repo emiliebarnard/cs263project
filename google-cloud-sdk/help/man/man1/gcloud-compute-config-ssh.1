@@ -1,0 +1,111 @@
+'\" t
+.TH "GCLOUD\-COMPUTE\-CONFIG\-SSH" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-compute-config-ssh \- Populate SSH config files with Host entries from each instance
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud compute config\-ssh\fR
+  [\-\-dry\-run]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-\-remove]
+  [\-\-ssh\-config\-file SSH_CONFIG_FILE]
+  [\-\-ssh\-key\-file SSH_KEY_FILE]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute config\-ssh\fR makes SSHing to virtual machine instances easier by adding an alias for each instance to the user SSH configuration (\(lq~/\&.ssh/config\(rq) file\&.
+.sp
+In most cases, it\(cqs sufficient to run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+gcloud compute config\-ssh
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Each instance will be given an alias of the form \(lqNAME\&.ZONE\&.PROJECT\(rq\&. For example, if \(lqmy\-instance\(rq resides in \(lqus\-central1\-a\(rq, you can SSH to it by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+ssh my\-instance\&.us\-central1\-a\&.my\-project
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+On some platforms, the host alias can be tab\-completed, making the long alias less daunting to type\&.
+.sp
+The aliases created interface with SSH\-based programs like \fBscp(1)\fR, so it\(cqs possible to use the aliases elsewhere:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+scp ~/my\-file my\-instance\&.us\-central1\-a\&.my\-project:~
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Whenever instances are added, removed, or their external IP addresses are changed, this command should be re\-executed to update the configuration\&.
+.SH "FLAGS"
+.PP
+\fB\-\-dry\-run\fR
+.RS 4
+If provided, the proposed changes to the SSH config file are printed to standard out and no actual changes are made\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-remove\fR
+.RS 4
+If provided, any changes made to the SSH config file by this tool are reverted\&.
+.RE
+.PP
+\fB\-\-ssh\-config\-file\fR \fISSH_CONFIG_FILE\fR
+.RS 4
+Specifies an alternative per\-user SSH configuration file\&. By default, this is \(lq~/\&.ssh/config\(rq\&.
+.RE
+.PP
+\fB\-\-ssh\-key\-file\fR \fISSH_KEY_FILE\fR
+.RS 4
+The path to the SSH key file\&. By default, this is \(lq~/\&.ssh/google_compute_engine\(rq\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE

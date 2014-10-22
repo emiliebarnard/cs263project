@@ -1,0 +1,116 @@
+'\" t
+.TH "GCLOUD\-COMPUTE\-URL\-MAPS\-ADD\-PATH\-MATCHER" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-compute-url-maps-add-path-matcher \- Add a path matcher to a URL map
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud compute url\-maps add\-path\-matcher\fR
+  NAME
+  \-\-default\-service DEFAULT_SERVICE
+  [\-\-delete\-orphaned\-path\-matcher]
+  [\-\-description DESCRIPTION]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-existing\-host EXISTING_HOST | \-\-new\-hosts NEW_HOST [NEW_HOST \&...]]
+  \-\-path\-matcher\-name PATH_MATCHER_NAME
+  [\-\-path\-rules PATH=SERVICE [PATH=SERVICE \&...]]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute url\-maps add\-path\-matcher\fR is used to add a path matcher to a URL map\&. A path matcher maps HTTP request paths to backend services\&. Each path matcher must be referenced by at least one host rule\&. This command can create a new host rule through the \(lq\-\-new\-hosts\(rq flag or it can reconfigure an existing host rule to point to the newly added path matcher using \(lq\-\-existing\-host\(rq\&. In the latter case, if a path matcher is orphaned as a result of the operation, this command will fail unless \(lq\-\-delete\-orphaned\-path\-matcher\(rq is provided\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the URL map\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-default\-service\fR \fIDEFAULT_SERVICE\fR
+.RS 4
+A backend service that will be used for requests that the path matcher cannot match\&.
+.RE
+.PP
+\fB\-\-delete\-orphaned\-path\-matcher\fR
+.RS 4
+If provided and a path matcher is orphaned as a result of this command, the command removes the orphaned path matcher instead of failing\&.
+.RE
+.PP
+\fB\-\-description\fR \fIDESCRIPTION\fR
+.RS 4
+An optional, textual description for the path matcher\&.
+.RE
+.PP
+\fB\-\-existing\-host\fR \fIEXISTING_HOST\fR
+.RS 4
+An existing host rule to tie the new path matcher to\&. Although host rules can contain more than one host, only a single host is needed to uniquely identify the host rule\&.
+.RE
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-new\-hosts\fR \fINEW_HOST [NEW_HOST \&...]\fR
+.RS 4
+If specified, a new host rule with the given hosts is createdand the path matcher is tied to the new host rule\&.
+.RE
+.PP
+\fB\-\-path\-matcher\-name\fR \fIPATH_MATCHER_NAME\fR
+.RS 4
+The name to assign to the path matcher\&.
+.RE
+.PP
+\fB\-\-path\-rules\fR \fIPATH=SERVICE [PATH=SERVICE \&...]\fR
+.RS 4
+Rules for mapping request paths to services\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To create a rule for mapping the paths \(lq/search\(rq and \(lq/search/*\(rq to the hypothetical \(lqsearch\-service\(rq and \(lq/images/\fB\(rq to the \(lqimages\-service\(rq under the hosts \(lqgoogle\&.com\(rq and \(lq\fR\&.google\&.com\(rq, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute url\-maps add\-path\-matcher my\-url\-map \e
+    \-\-path\-matcher\-name my\-matcher \e
+    \-\-default\-service my\-default\-service \e
+    \-\-path\-rules /search=search\-service \e
+                 /search/*=search_service \e
+                 /images/*=images\-service \e
+    \-\-new\-hosts google\&.com "*\&.google\&.com"
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Note that a default service must be provided to handle paths for which there is no mapping\&.

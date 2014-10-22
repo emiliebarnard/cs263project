@@ -1,0 +1,59 @@
+'\" t
+.TH "GCLOUD\-COMPONENTS\-REPOSITORIES\-ADD" "1"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+gcloud-components-repositories-add \- Add a new Trusted Tester component repository\&.
+.SH "SYNOPSIS"
+.sp
+.nf
+\fBgcloud components repositories add\fR
+  URL [URL \&...]
+  [\-\-format FORMAT]
+  [\-\-help]
+  [\-\-project PROJECT]
+  [\-\-quiet, \-q]
+  [\-h]
+.fi
+.SH "DESCRIPTION"
+.sp
+Add a new Trusted Tester component repository to the list of repositories used by the component manager\&. This will allow you to install and update components found in this repository\&.
+.sp
+If you are participating in a Trusted Tester program, you will be instructed on the location of repositories with additional versions of one or more Cloud SDK components\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fIURL [URL \&...]\fR
+.RS 4
+One or more URLs for the component repositories you want to add\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are: "json", "text", "yaml"\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT\fR
+.RS 4
+Google Cloud Platform project to use for this invocation\&.
+.RE
+.PP
+\fB\-\-quiet\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+$ gcloud components repositories add http://repo\&.location\&.com

@@ -1,0 +1,27 @@
+package com.google.appengine.demos.taskqueue;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+import java.io.IOException;
+import java.util.Properties;
+
+// The Worker servlet should be mapped to the "/worker" URL.
+public class Worker extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String key = request.getParameter("key");
+        String value = request.getParameter("value");
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        
+        Entity ourInfo = new Entity(key, value, date);
+    }
+}
