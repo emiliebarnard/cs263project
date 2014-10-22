@@ -28,7 +28,8 @@ public class Worker extends HttpServlet {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         
-        Entity ourInfo = new Entity(key);
+        Entity ourInfo = new Entity("TaskData");
+        ourInfo.setProperty("key", key);
         ourInfo.setProperty("value", value);
         ourInfo.setProperty("date", dateFormat.format(date));
         

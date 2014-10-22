@@ -20,10 +20,11 @@ public class Enqueue extends HttpServlet {
 
         // Add the task to the default queue.
         Queue queue = QueueFactory.getDefaultQueue();
-        queue.add(withUrl("/worker").param("key", key));
-        queue.add(withUrl("/worker").param("value", value));
+        queue.add(withUrl("/worker").param("key", key).param("value", value));
+        //queue.add(withUrl("/worker").param("value", value));
 
-//      response.sendRedirect("/done.html");
-        response.sendRedirect("/test.html");
+        // response.sendRedirect("/done.html");
+//        response.sendRedirect("/test");
+        response.sendRedirect("/tqueue.jsp?key=" + key);
     }
 }

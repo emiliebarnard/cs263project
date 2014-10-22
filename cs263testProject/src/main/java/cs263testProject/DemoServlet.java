@@ -1,4 +1,4 @@
-package myapp;
+package cs263testProject;
 
 import java.io.IOException;
 import javax.servlet.http.*;

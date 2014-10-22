@@ -33,26 +33,26 @@ import java.util.Properties;
 
 // The ReadData servlet should be mapped to the "/test" URL.
 public class ReadData extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     	
-    Query q =  new Query();
-    PreparedQuery pq = datastore.prepare(q);
-    for (Entity result : pq.asIterable()) {   
-        String value = (String) result.getProperty("value");   
-        String date = (String) result.getProperty("date");   
-//        String key = (String) result.getProperty("key");   
-        System.out.println("value: " + value + "date: " + date); 
-    }
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
 
     out.println("<html>");
     out.println("<head>");
-    out.println("<title>Hola</title>");
+    out.println("<title>All the Stuffs</title>");
     out.println("</head>");
     out.println("<body bgcolor=\"white\">");
+    Query q =  new Query();
+    PreparedQuery pq = datastore.prepare(q);
+    for (Entity result : pq.asIterable()) {   
+        String value = (String) result.getProperty("value");   
+        String date = (String) result.getProperty("date");   
+        String key = (String) result.getProperty("key");   
+        out.println("<b>key</b>: "+ key + " <b>value</b>: " + value + " <b>date</b>: " + date + "<br>"); 
+    }
     out.println("</body>");
     out.println("</html>");
     }
