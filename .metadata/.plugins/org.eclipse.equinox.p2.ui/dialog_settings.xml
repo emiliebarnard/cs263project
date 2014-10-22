@@ -18,6 +18,13 @@
 		<item value="450" key="AvailableNameColumnWidth"/>
 		<item value="false" key="FilterOnEnv"/>
 	</section>
+	<section name="org.eclipse.m2e.internal.discovery.wizards.MavenDiscoveryInstallWizard.WizardSettings">
+		<item value="871" key="DIALOG_WIDTH"/>
+		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
+		<item value="526" key="DIALOG_HEIGHT"/>
+		<item value="-127" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.equinox.internal.p2.ui.dialogs.UninstallWizard.WizardSettings">
 		<item value="525" key="DIALOG_WIDTH"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
@@ -36,7 +43,7 @@
 		<item value="871" key="DIALOG_WIDTH"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 		<item value="654" key="DIALOG_HEIGHT"/>
-		<item value="75" key="DIALOG_Y_ORIGIN"/>
-		<item value="306" key="DIALOG_X_ORIGIN"/>
+		<item value="-290" key="DIALOG_Y_ORIGIN"/>
+		<item value="270" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>

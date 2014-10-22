@@ -16,5 +16,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.appengine.tools.development.DevAppServerMain"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="--port=8888 /Users/emilie/Documents/cs263/cs263project/HelloWorld/war"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="HelloWorld"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=50 -Xmx512m -javaagent:/Applications/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.13/appengine-java-sdk-1.9.13/lib/agent/appengine-agent.jar -XstartOnFirstThread -Xbootclasspath/p:/Applications/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.13/appengine-java-sdk-1.9.13/lib/override/appengine-dev-jdk-overrides.jar"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=50 -Xmx512m -javaagent:/Users/emilie/.m2/repository/com/google/appengine/appengine-java-sdk/1.9.10/appengine-java-sdk/appengine-java-sdk-1.9.10/lib/agent/appengine-agent.jar -XstartOnFirstThread -Xbootclasspath/p:/Applications/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.9.13/appengine-java-sdk-1.9.13/lib/override/appengine-dev-jdk-overrides.jar"/>
 </launchConfiguration>

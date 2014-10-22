@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JavaRefs>
 <JavaRef class="com.google.gwt.eclipse.core.search.IndexedJsniJavaRef" offset="876" source="/TaskEngine/src/com/google/appengine/demos/taskengine/client/DeferredCommand.java">@com.google.appengine.demos.taskengine.client.DeferredCommand::onExecute()</JavaRef>
-<JavaRef class="com.google.gwt.eclipse.core.search.IndexedJsniJavaRef" offset="3099" source="/TaskEngine/src/com/google/appengine/demos/taskengine/client/DomUtils.java">@com.google.gwt.user.client.EventListener::onBrowserEvent(Lcom/google/gwt/user/client/Event;)</JavaRef>
 <JavaRef class="com.google.gwt.eclipse.core.search.JsniJavaRefParamType" offset="3157" source="/TaskEngine/src/com/google/appengine/demos/taskengine/client/DomUtils.java">Lcom/google/gwt/user/client/Event;</JavaRef>
+<JavaRef class="com.google.gwt.eclipse.core.search.IndexedJsniJavaRef" offset="3099" source="/TaskEngine/src/com/google/appengine/demos/taskengine/client/DomUtils.java">@com.google.gwt.user.client.EventListener::onBrowserEvent(Lcom/google/gwt/user/client/Event;)</JavaRef>
 </JavaRefs>

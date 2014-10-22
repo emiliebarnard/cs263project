@@ -18,8 +18,22 @@
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/Users/emilie/Documents/cs263/testProject/appengine-try-java-2"/>
+			<item value="/Users/emilie/Documents/cs263/cs263project/appengine-try-java-eclipse"/>
 			<item value="/Users/emilie/Documents/cs263/cs263project/appengine-try-java"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -31,6 +45,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -39,8 +54,30 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 		</list>
 	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.wizards.CustomArchetypeDialog">
+		<list key="archetypeVersion">
+			<item value="1.8.7"/>
+			<item value="1"/>
+		</list>
+		<list key="archetypeGroupId">
+			<item value="mavengaetestproject"/>
+		</list>
+		<list key="archetypeArtifactId">
+			<item value="mavengaetestproject"/>
+		</list>
+		<list key="repositoryUrl">
+			<item value="com.google.appengine.archetypes:skeleton-archetype"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.preferences.RemoteArchetypeCatalogDialog">
+		<list key="catalogUrl">
+			<item value="http://repo1.maven.org/maven2/archetype-catalog.xml"/>
+		</list>
+	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="/Users/emilie/Documents/cs263/testProject"/>
+			<item value="/Users/emilie/Documents/cs263/cs263project/appengine-try-java-eclipse/src/main/webapp/WEB-INF"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -52,10 +89,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="cs263testProject.cs263testProject"/>
 		</list>
 		<list key="groupId">
+			<item value="cs263testProject"/>
 		</list>
 		<list key="artifactId">
+			<item value="cs263testProject"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
