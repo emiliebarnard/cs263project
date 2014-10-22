@@ -44,7 +44,6 @@
     }   
 %>
 <p>The value in ${fn:escapeXml(keyname)} is ${fn:escapeXml(value)}! =D
-<br>'${fn:escapeXml(key)}' '${fn:escapeXml(value)}' '${fn:escapeXml(date)}' </p>
 
 </body>
 </html>
