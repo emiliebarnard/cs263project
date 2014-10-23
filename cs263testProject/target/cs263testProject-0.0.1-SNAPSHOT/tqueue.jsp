@@ -14,6 +14,9 @@
 <%@ page import="com.google.appengine.api.datastore.Query.FilterOperator" %>
 <%@ page import="com.google.appengine.api.datastore.Query.SortDirection" %>
 <%@ page import="com.google.appengine.api.datastore.PreparedQuery" %>
+<%@ page import="java.util.logging.Level" %>
+<%@ page import="com.google.appengine.api.memcache.*" %>
+<%@ page import="java.lang.Object" %>
 
 <html>
 <head>
@@ -34,16 +37,46 @@
     keyValue.addFilter("key", FilterOperator.EQUAL, keyname);
     keyValue.addSort("date", SortDirection.ASCENDING);
     PreparedQuery pKeyValue = datastore.prepare(keyValue);
+    
+    MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+    syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+    
     for (Entity result : pKeyValue.asIterable()) {   
-        String value = (String) result.getProperty("value");   
-        String date = (String) result.getProperty("date");   
-        String key = (String) result.getProperty("key");
+        String key = (String) result.getProperty("key");   
+        String date = result.getProperty("date").toString();
         pageContext.setAttribute("key", key);
     	pageContext.setAttribute("date", date);
-    	pageContext.setAttribute("value", value); 
-    }   
+    	
+    	String value = "";
+    	String cacheUse = "";
+    	if (syncCache.get(key)==null){
+    		value = null;
+    		cacheUse = "?";
+    	}
+    	else{
+    		value = syncCache.get(key).toString(); //read value from cache and convert to string
+    		cacheUse = "yes";
+    	}
+    	
+    	if (value == null){   
+        	value = (String) result.getProperty("value");
+        	cacheUse = "no";
+        }
+    	pageContext.setAttribute("value", value);
+    	pageContext.setAttribute("cacheUse", cacheUse); 
+    }
+    Stats ourStats = syncCache.getStatistics();
+    long numItems = ourStats.getItemCount();
+    int accessTime = ourStats.getMaxTimeWithoutAccess();
+    pageContext.setAttribute("numItems", numItems);
+    pageContext.setAttribute("accessTime", accessTime); 
+    
+    
+       
 %>
 <p>The value in ${fn:escapeXml(keyname)} is ${fn:escapeXml(value)}! =D
+<br>Used cache? ${fn:escapeXml(cacheUse)}
+<br>There are currently ${fn:escapeXml(numItems)} items active in the cache, and the last access of least-recently-used live entry occured ${fn:escapeXml(accessTime)} ms ago.</p>
 
 </body>
 </html>

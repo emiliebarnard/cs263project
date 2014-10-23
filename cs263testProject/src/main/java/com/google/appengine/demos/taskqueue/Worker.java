@@ -1,6 +1,10 @@
 package com.google.appengine.demos.taskqueue;
 
 import java.util.Date;
+import java.util.logging.Level;
+import com.google.appengine.api.memcache.*;
+import java.lang.Object;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -31,9 +35,17 @@ public class Worker extends HttpServlet {
         Entity ourInfo = new Entity("TaskData");
         ourInfo.setProperty("key", key);
         ourInfo.setProperty("value", value);
-        ourInfo.setProperty("date", dateFormat.format(date));
+//        ourInfo.setProperty("date", dateFormat.format(date));
+        ourInfo.setProperty("date", date);
         
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         datastore.put(ourInfo);
+        
+        
+        MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+        syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+        
+        syncCache.put(key, value); // populate cache
+        
     }
 }

@@ -3,7 +3,6 @@ package com.google.appengine.demos.taskqueue;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServlet;
@@ -30,6 +29,11 @@ import javax.ws.rs.Path;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+
+import com.google.appengine.api.memcache.*;
+
+import java.lang.Object;
 
 // The ReadData servlet should be mapped to the "/test" URL.
 public class ReadData extends HttpServlet {
@@ -47,10 +51,16 @@ public class ReadData extends HttpServlet {
     out.println("<body bgcolor=\"white\">");
     Query q =  new Query();
     PreparedQuery pq = datastore.prepare(q);
-    for (Entity result : pq.asIterable()) {   
-        String value = (String) result.getProperty("value");   
-        String date = (String) result.getProperty("date");   
-        String key = (String) result.getProperty("key");   
+    for (Entity result : pq.asIterable()) {
+    	String key = (String) result.getProperty("key"); 
+        String value = (String) result.getProperty("value");
+        String date = "";
+        if (result.getProperty("date")!=null){
+        	date = result.getProperty("date").toString();
+        }
+        else {
+        	date = "";
+        }  
         out.println("<b>key</b>: "+ key + " <b>value</b>: " + value + " <b>date</b>: " + date + "<br>"); 
     }
     out.println("</body>");

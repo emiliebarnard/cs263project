@@ -1,6 +1,10 @@
 package com.google.appengine.demos.taskqueue;
 // The Enqueue servlet should be mapped to the "/enqueue" URL.
 import com.google.appengine.api.taskqueue.Queue;
+import java.util.logging.Level;
+import com.google.appengine.api.memcache.*;
+import java.lang.Object;
+
 import com.google.appengine.api.taskqueue.QueueFactory;
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.*;
 
