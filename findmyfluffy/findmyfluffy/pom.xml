@@ -46,6 +46,14 @@
             <version>${appengine.target.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Jersey Dependency -->
+       <dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+    		<!-- if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core" -->
+    		<artifactId>jersey-container-servlet-core</artifactId>
+    		<version>2.2</version>
+		</dependency>
     </dependencies>
 
     <build>
