@@ -1,11 +1,14 @@
-cs263project
+cs263project: Find My Fluffy
 ============
 
 Repo for my course project for CS 263: Programming Language Runtime Systems at UC Santa Barbara.
+Find My Fluffy is a webservice intended to allow users to easily report lost and found pets, and will generate potential lost/found matched based on database entries.
 
 ------------
 
 NOTES:
+
+-----------
 
 
 From Google Developer:
