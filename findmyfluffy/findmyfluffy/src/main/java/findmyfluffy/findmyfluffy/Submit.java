@@ -1,16 +1,18 @@
 package findmyfluffy.findmyfluffy;
 
-
 //Jersey
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
+//Jersey
 @Path("/")
 
-public class Interface {
+public class Submit {
+	//Jersey
 	@GET
-	@Path("/home")
+	@Path("/done")
 	public String testMethod() {
-		return "find my fluffy service coming soon! =^.^=";
-	}	
+		return "thanks for the info! =^.^=";
+	}
+
 }
