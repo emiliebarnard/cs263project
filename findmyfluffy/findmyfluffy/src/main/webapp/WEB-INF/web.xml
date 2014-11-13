@@ -17,21 +17,29 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<servlet-mapping>
+  	<servlet-mapping>
 		<servlet-name>Jersey Web Application</servlet-name>
-		<url-pattern>/submit/*</url-pattern>
-	</servlet-mapping>
-
+		<url-pattern>/submit/*</url-pattern> 
+ 	</servlet-mapping>
 	<!-- JSP PAGES: -->
 	<!-- submit jsp -->
-	<servlet>
-		<servlet-name>submit</servlet-name>
-		<servlet-class>findmyfluffy.findmyfluffy.Submit</servlet-class>
+<!-- 	<servlet>
+		<servlet-name>SubmitLost</servlet-name>
+		<servlet-class>findmyfluffy.findmyfluffy.SubmitLost</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>submit</servlet-name>
-		<url-pattern>/submit</url-pattern>
-	</servlet-mapping>
+		<servlet-name>SubmitLost</servlet-name>
+		<url-pattern>/submit/*</url-pattern>
+	</servlet-mapping> -->
+	
+<!-- 		<servlet>
+		<servlet-name>SubmitFound</servlet-name>
+		<servlet-class>findmyfluffy.findmyfluffy.SubmitFound</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubmitFound</servlet-name>
+		<url-pattern>/submit/*</url-pattern>
+	</servlet-mapping> -->
 	
 <!-- 	welcome file: -->
 	<welcome-file-list>

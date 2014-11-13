@@ -38,13 +38,32 @@
     }
 %>
 -->
-<p>Meow!</p>
+<h1>find my fluffy</h1>
+<p>an online database matching lost and found cats</p>
 
-
-<form action="/submit/done" method="get">
-  Pet Name: <input type="text" name="petname"><br>
-  Your Name: <input type="text" name="username"><br>
-  <input type="submit" value="Submit">
+<div id="wrapper">
+	<div id="lostForm">
+		<h2>lost cat?</h2>
+		<form action="/submit/lost" method="get">
+			<p>
+			cat's name: <input type="text" name="petname"><br>
+			your name: <input type="text" name="contactname"><br>
+			</p>
+		<input type="submit" value="submit">
+		</form>
+	</div>
+	
+	<div id="foundForm">
+		<h2>found cat?</h2>
+		<form action="/submit/found" method="get">
+			<p>
+			cat's name: <input type="text" name="petname"><br>
+			your name: <input type="text" name="contactname"><br>
+			</p>
+		<input type="submit" value="submit">
+		</form>
+	</div>
+</div>
 
 </body>
 </html>
