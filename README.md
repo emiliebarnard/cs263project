@@ -8,6 +8,8 @@ The database is intended to be used by shelter staff. Because of this, those who
 
 This is different from other lost pet databases. Current databases require users to register, and focus on general pets. This will focus specifically on cats, which will enable the database to be more precise and thus more accurate. Registration is also not required to use find my fluffy.
 
+This project will act as a stepping stone for the shelter I volunteer at before we integrate into a larger software. More info about the larger software can be found here: http://www.chameleonbeach.com/ProductsandServices/ChameleonCMS/tabid/90/Default.aspx
+
 ------------
 
 NOTES:
