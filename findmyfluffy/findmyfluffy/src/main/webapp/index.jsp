@@ -47,7 +47,26 @@
 		<form action="/submit/lost" method="get">
 			<p>
 			cat's name: <input type="text" name="petname"><br>
+			<input type="checkbox" name="chip" value="chip"> microchipped?<br>
+			age: <input type="text" name="age"><br>
+			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
+			breed: <select name="breed">
+				<option value="dsh">domestic short hair</option>
+				<option value="dmh">domestic medium hair</option>
+				<option value="dlh">domestic long hair</option>
+			</select><br>
+			primary color: <select name="color">
+				<option value="white">white</option>
+				<option value="calico">calico</option>
+				<option value="tortoiseshell">tortoiseshell</option>
+				<option value="orangetabby">orange tabby</option>
+				<option value="browntabby">brown tabby</option>
+				<option value="tuxedo">tuxedo</option>
+				<option value="black">black</option>
+			</select>
+			<br>area last seen: <input type="text" name="address"><br>
 			your name: <input type="text" name="contactname"><br>
+			your e-mail: <input type="text" name="contactemail">
 			</p>
 		<input type="submit" value="submit">
 		</form>
@@ -58,7 +77,26 @@
 		<form action="/submit/found" method="get">
 			<p>
 			cat's name: <input type="text" name="petname"><br>
+			age: <input type="text" name="age"><br>
+			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
+			breed: <select name="breed">
+				<option value="volvo">domestic short hair</option>
+				<option value="saab">domestic medium hair</option>
+				<option value="mercedes">domestic long hair</option>
+			</select><br>
+			primary color: <select name="color">
+				<option value="white">white</option>
+				<option value="calico">calico</option>
+				<option value="tortoiseshell">tortoiseshell</option>
+				<option value="orangetabby">orange tabby</option>
+				<option value="browntabby">brown tabby</option>
+				<option value="tuxedo">tuxedo</option>
+				<option value="black">black</option>
+			</select>
+			<br>
+			area found: <input type="text" name="address"><br>
 			your name: <input type="text" name="contactname"><br>
+			your e-mail: <input type="text" name="contactemail">
 			</p>
 		<input type="submit" value="submit">
 		</form>
