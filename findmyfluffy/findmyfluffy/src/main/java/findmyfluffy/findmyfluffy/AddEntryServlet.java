@@ -24,6 +24,13 @@ public class AddEntryServlet extends HttpServlet {
 	  //make our datastore
 	  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	  
+	  //do more stuff here with datastore stuff
+	  
+	  //want to get the info submitted from the user and add it to our storage
+	  
+	  //should have different types for lost/found
+	  //or maybe just some sort of field that has if it's lost or found
+	  
 //    UserService userService = UserServiceFactory.getUserService();
 //    User user = userService.getCurrentUser();
 //

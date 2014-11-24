@@ -14,5 +14,4 @@ public class SubmitFound{
 	public String printFoundInfo() {
 		return "thanks for the info! we'll use it to help the kitty find their home. =^.^=";
 	}
-
 }
