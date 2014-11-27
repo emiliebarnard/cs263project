@@ -44,7 +44,7 @@
 <div id="wrapper">
 	<div id="lostForm">
 		<h2>lost cat?</h2>
-		<form action="/submit/lost" method="get">
+		<form action="/addentry" method="post">
 			<p>
 			cat's name: <input type="text" name="petname"><br>
 			<input type="checkbox" name="chip" value="chip"> microchipped?<br>

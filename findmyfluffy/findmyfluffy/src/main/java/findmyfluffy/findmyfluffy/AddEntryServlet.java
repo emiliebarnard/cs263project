@@ -21,8 +21,14 @@ public class AddEntryServlet extends HttpServlet {
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
 	  
-	  //make our datastore
+	  String lostCatName = req.getParameter("petname");
+	  Key lostCatKey = KeyFactory.createKey("lostcat", lostCatName);
+	 
+	  Entity lostCat = new Entity("lostcat", lostCatKey);
+	    
+	  //put lost cat in datastore
 	  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	  datastore.put(lostCat);
 	  
 	  //do more stuff here with datastore stuff
 	  
