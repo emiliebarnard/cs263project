@@ -16,7 +16,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddEntryServlet extends HttpServlet {
+public class AddLostEntryServlet extends HttpServlet {
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+//		doPost(request, response);
+	}	
+	
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
@@ -29,6 +35,9 @@ public class AddEntryServlet extends HttpServlet {
 	  //put lost cat in datastore
 	  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	  datastore.put(lostCat);
+	  
+	  //redirect to thank you page
+	  resp.sendRedirect("/submit/lost/");
 	  
 	  //do more stuff here with datastore stuff
 	  

@@ -48,11 +48,11 @@
 	
 	
 	<servlet>
-        <servlet-name>addentry</servlet-name>
-        <servlet-class>findmyfluffy.findmyfluffy.AddEntryServlet</servlet-class>
+        <servlet-name>addlostentry</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.AddLostEntryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>addentry</servlet-name>
-        <url-pattern>/addentry</url-pattern>
+        <servlet-name>addlostentry</servlet-name>
+        <url-pattern>/submit/lost</url-pattern>
     </servlet-mapping>
 </web-app>
