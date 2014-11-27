@@ -27,11 +27,36 @@ public class AddLostEntryServlet extends HttpServlet {
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
 	  
+	  //have to add a check to see if these were left blank
+	  
+	  
 	  String lostCatName = req.getParameter("petname");
+	  
 	  Key lostCatKey = KeyFactory.createKey("lostcat", lostCatName);
-	 
 	  Entity lostCat = new Entity("lostcat", lostCatKey);
+	  
 	  lostCat.setProperty("catname", lostCatName);
+	  
+	  boolean chipped = false;
+	  System.out.println(req.getParameter("chip"));
+	  
+	  try{
+		  if (req.getParameter("chip").equals("chip")){
+			  System.out.println("true");
+			  chipped = true;
+		  }
+	  } catch(NullPointerException e){
+		//do nothing  
+	  }
+	  
+	  lostCat.setProperty("microchip", chipped);
+	  
+	  //have to check and see if we can parse this to an int first
+	  int catAge = Integer.parseInt(req.getParameter("age"));
+	  lostCat.setProperty("age", catAge);
+	 
+	  
+	  
 	    
 	  //put lost cat in datastore
 	  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
