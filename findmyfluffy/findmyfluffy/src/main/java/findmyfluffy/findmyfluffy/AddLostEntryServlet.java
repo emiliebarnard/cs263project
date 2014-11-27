@@ -31,13 +31,14 @@ public class AddLostEntryServlet extends HttpServlet {
 	  Key lostCatKey = KeyFactory.createKey("lostcat", lostCatName);
 	 
 	  Entity lostCat = new Entity("lostcat", lostCatKey);
+	  lostCat.setProperty("catname", lostCatName);
 	    
 	  //put lost cat in datastore
 	  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	  datastore.put(lostCat);
 	  
 	  //redirect to thank you page
-	  resp.sendRedirect("/submit/lost/");
+	  resp.sendRedirect("/submit/lost/?catname=" + lostCatName);
 	  
 	  //do more stuff here with datastore stuff
 	  
