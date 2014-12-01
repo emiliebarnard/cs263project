@@ -11,6 +11,9 @@ This is different from other lost pet databases. Current databases require users
 This project will act as a stepping stone for the shelter I volunteer at before we integrate into a larger software. More info about the larger software can be found here: http://www.chameleonbeach.com/ProductsandServices/ChameleonCMS/tabid/90/Default.aspx
 
 ------------
+**The project is under /findmyfluffy/findmyfluffy
+I'm having issues moving folders around without breaking the project in Eclipse.
+
 
 NOTES:
 
