@@ -64,7 +64,7 @@
 				<option value="tuxedo">tuxedo</option>
 				<option value="black">black</option>
 			</select>
-			<br>area last seen: <input type="text" name="address"><br>
+			<br>area last seen: <input type="text" name="area"><br>
 			your name: <input type="text" name="contactname"><br>
 			your e-mail: <input type="text" name="contactemail">
 			</p>

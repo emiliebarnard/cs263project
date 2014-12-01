@@ -27,7 +27,7 @@ public class AddLostEntryServlet extends HttpServlet {
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
 	  
-	  //have to add a check to see if these were left blank
+	  //TODO: have to add a check to see if these were left blank
 	  
 	  
 	  String lostCatName = req.getParameter("petname");
@@ -51,12 +51,30 @@ public class AddLostEntryServlet extends HttpServlet {
 	  
 	  lostCat.setProperty("microchip", chipped);
 	  
-	  //have to check and see if we can parse this to an int first
+	  //TODO: have to check and see if we can parse this to an int first
 	  int catAge = Integer.parseInt(req.getParameter("age"));
 	  lostCat.setProperty("age", catAge);
 	 
+	  String catSex = req.getParameter("sex");
+	  lostCat.setProperty("sex", catSex);
 	  
+	  String breed = req.getParameter("breed");
+	  lostCat.setProperty("breed", breed);
 	  
+	  String color = req.getParameter("color");
+	  lostCat.setProperty("color", color);
+	  
+	  String area = req.getParameter("area");
+	  lostCat.setProperty("area", area);
+	  
+	  String contactName = req.getParameter("contactname");
+	  lostCat.setProperty("contactname", contactName);
+	  
+	  String contactEmail = req.getParameter("contactemail");
+	  lostCat.setProperty("contactemail", contactEmail);
+	  
+//	  //flag that this is a lost cat
+//	  lostCat.setProperty("lostOrFound", "lost");
 	    
 	  //put lost cat in datastore
 	  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
