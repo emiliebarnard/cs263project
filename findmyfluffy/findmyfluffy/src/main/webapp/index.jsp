@@ -54,15 +54,27 @@
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>
 				<option value="dlh">domestic long hair</option>
+				<option value="bengal">bengal</option>
+				<option value="burmese">burmese</option>
+				<option value="himalayan">himalayan</option>
+				<option value="lynx">lynx</option>
+				<option value="mainecoon">maine coon</option>
+				<option value="persian">persian</option>
+				<option value="pixiebob">pixie bob</option>
+				<option value="russian blue">russian blue</option>
+				<option value="tonkinese">tonkinese</option>
+				<option value="siamese">siamese</option>
 			</select><br>
-			primary color: <select name="color">
+			primary coloring: <select name="color">
 				<option value="white">white</option>
 				<option value="calico">calico</option>
 				<option value="tortoiseshell">tortoiseshell</option>
 				<option value="orangetabby">orange tabby</option>
 				<option value="browntabby">brown tabby</option>
+				<option value="greytabby">grey tabby</option>
 				<option value="tuxedo">tuxedo</option>
 				<option value="black">black</option>
+				<option value="sealpoint">seal point</option>
 			</select>
 			<br>area last seen: <input type="text" name="area"><br>
 			your name: <input type="text" name="contactname"><br>
@@ -80,18 +92,30 @@
 			age: <input type="text" name="age"><br>
 			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
 			breed: <select name="breed">
-				<option value="volvo">domestic short hair</option>
-				<option value="saab">domestic medium hair</option>
-				<option value="mercedes">domestic long hair</option>
+				<option value="dsh">domestic short hair</option>
+				<option value="dmh">domestic medium hair</option>
+				<option value="dlh">domestic long hair</option>
+				<option value="bengal">bengal</option>
+				<option value="burmese">burmese</option>
+				<option value="himalayan">himalayan</option>
+				<option value="lynx">lynx</option>
+				<option value="mainecoon">maine coon</option>
+				<option value="persian">persian</option>
+				<option value="pixiebob">pixie bob</option>
+				<option value="russian blue">russian blue</option>
+				<option value="tonkinese">tonkinese</option>
+				<option value="siamese">siamese</option>
 			</select><br>
-			primary color: <select name="color">
+			primary coloring: <select name="color">
 				<option value="white">white</option>
 				<option value="calico">calico</option>
 				<option value="tortoiseshell">tortoiseshell</option>
 				<option value="orangetabby">orange tabby</option>
 				<option value="browntabby">brown tabby</option>
+				<option value="greytabby">grey tabby</option>
 				<option value="tuxedo">tuxedo</option>
 				<option value="black">black</option>
+				<option value="sealpoint">seal point</option>
 			</select>
 			<br>
 			area found: <input type="text" name="address"><br>
