@@ -30,7 +30,17 @@ p, lostForm p, foundForm p {
 }
 
 #lostForm {
-	width: 250px;
+	width: 270px;
+	display: inline-block;
+	float: left;
+	border: 2px solid;
+	padding: 10px;
+	border-radius: 25px;
+	border-color: #4082a3;
+}
+
+#lostUpload {
+	width: 530px;
 	display: inline-block;
 	float: left;
 	border: 2px solid;
@@ -40,7 +50,18 @@ p, lostForm p, foundForm p {
 }
 
 #foundForm {
-	width: 250px;
+	width: 270px;
+	display: inline-block;
+	float: right;
+	border: 2px solid;
+	padding: 10px;
+	border-radius: 25px;
+	border-color: #4082a3;
+	
+}
+
+#foundUpload {
+	width: 530px;
 	display: inline-block;
 	float: right;
 	border: 2px solid;
