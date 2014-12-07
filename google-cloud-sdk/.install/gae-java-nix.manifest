@@ -1,5 +1,0 @@
-bin/
-bin/google_sql.sh
-bin/endpoints.sh
-bin/dev_appserver.sh
-bin/appcfg.sh

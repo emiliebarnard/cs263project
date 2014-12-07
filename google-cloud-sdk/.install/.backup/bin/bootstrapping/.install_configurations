@@ -1,1 +1,0 @@
-[{"default_components": ["pkg-java"], "name": "Java"}, {"default_components": ["pkg-python"], "name": "Python and PHP"}, {"default_components": ["pkg-go"], "name": "Go"}, {"default_components": [], "name": "No App Engine (you can install App Engine tools later)"}]

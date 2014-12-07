@@ -1,8 +1,0 @@
-INDEX VERSION 1.3+/Users/emilie/Documents/cs263/cs263project/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-2747081448.index
-862400622.index
-3846558962.index
-1240828003.index
-2384081102.index
-1301714718.index
-2247520417.index

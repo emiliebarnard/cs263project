@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<servers>
-  <server hostname="localhost" id="Google App Engine at localhost" name="Google App Engine at localhost" runtime-id="Google App Engine" server-type="com.google.appengine.server.id" server-type-id="com.google.appengine.server.id" start-timeout="240" stop-timeout="240" timestamp="2">
-    <list key="gae-server-modules-list"/>
-    <list key="modules"/>
-    <map key="gae_server_instance_properties"/>
-  </server>
-</servers>

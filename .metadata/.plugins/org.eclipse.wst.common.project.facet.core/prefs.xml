@@ -1,9 +1,0 @@
-<root>
-  <facet id="jpt.jpa">
-    <node name="libprov">
-      <node name="last-provider-used">
-        <attribute name="2.1" value="com.google.appengine.eclipse.wtp.jpa.GaeLibraryProvider"/>
-      </node>
-    </node>
-  </facet>
-</root>
