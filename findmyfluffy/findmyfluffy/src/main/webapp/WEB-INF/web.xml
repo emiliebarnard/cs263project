@@ -64,4 +64,25 @@
         <servlet-name>addfoundentry</servlet-name>
         <url-pattern>/submit/found</url-pattern>
     </servlet-mapping>
+ 
+<!--  blobstore  -->  
+    <servlet>
+    <servlet-name>Upload</servlet-name>
+    <servlet-class>findmyfluffy.findmyfluffy.Upload</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>Serve</servlet-name>
+    <servlet-class>findmyfluffy.findmyfluffy.Serve</servlet-class>
+  </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>Upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Serve</servlet-name>
+    <url-pattern>/serve</url-pattern>
+  </servlet-mapping>
 </web-app>
