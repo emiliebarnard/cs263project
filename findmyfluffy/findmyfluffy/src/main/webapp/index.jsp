@@ -8,6 +8,49 @@
 <html>
 <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+<!--     jquery for JSON use: -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+<!--     json stuff -->
+    <script type="text/javascript">
+    	function ConvertFormToJSON(form){
+    		var array = jQuery(form).serializeArray();
+    		var json = {};
+    		
+    		jQuery.each(array, function(){
+	    		json[this.name] = this.value || '';
+    		});
+    		
+    		return json;
+    	}
+    	
+    	function submitJSONlostForm(){
+    		
+    		var lostForm = document.getElementById('lostFormInfo');
+    		var jsonInfo = ConvertFormToJSON(lostForm);
+    		 $.ajax({
+           		type: "POST",
+   				url: "/submit/lost",
+   				data: JSON.stringify(jsonInfo),
+   				/*
+dataType: "json",
+				contentType: 'application/json',
+        		mimeType: 'application/json'
+*/
+			}).done(function() {
+                window.location.href = "/submit/lost/?catname=" + document.getElementById('lostpetname').value ;
+            }).fail(function(jqXHR, textStatus) {
+                alert("AJAX Failed with status " + textStatus);
+            });
+			
+			return false;
+    	}
+    	
+		$(document).ready(function () {
+    
+		});
+	</script>
+    
 </head>
 
 <body>
@@ -38,15 +81,17 @@
     }
 %>
 -->
+
 <h1>find my fluffy</h1>
 <p>an online database matching lost and found cats</p>
 
 <div id="wrapper">
 	<div id="lostForm">
 		<h2>lost cat?</h2>
-		<form action="/submit/lost" method="post">
+		<!-- <form action="/submit/lost" method="post"> -->
+		<form id="lostFormInfo" onsubmit="return submitJSONlostForm()">
 			<p>
-			cat's name: <input type="text" name="petname"><br>
+			cat's name: <input type="text" name="petname" id="lostpetname"><br>
 			<input type="checkbox" name="chip" value="chip"> microchipped?<br>
 			age: <input type="text" name="age"><br>
 			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
@@ -78,7 +123,7 @@
 			</select>
 			<br>area last seen: <input type="text" name="area"><br>
 			your name: <input type="text" name="contactname"><br>
-			your e-mail: <input type="text" name="contactemail">
+			your phone or e-mail: <input type="text" name="contactemail">
 			</p>
 		<input type="submit" value="submit">
 		</form>
@@ -120,7 +165,7 @@
 			<br>
 			area found: <input type="text" name="address"><br>
 			your name: <input type="text" name="contactname"><br>
-			your e-mail: <input type="text" name="contactemail">
+			your phone or e-mail: <input type="text" name="contactemail">
 			</p>
 		<input type="submit" value="submit">
 		</form>
