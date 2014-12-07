@@ -4,5 +4,5 @@ HelloWorld*
 .gitignore~
 .metadata*
 .recommenders*
-.apache-maven-3.2.3*
+apache-maven-3.2.3*
 google-cloud-sdk*
