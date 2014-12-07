@@ -39,8 +39,10 @@ public class UploadFound extends HttpServlet {
         	//TO DO: refactor code so we have a create lost/create found entry
         	String[] blobStringArray = blobString.split("\n");
         	
-        		System.out.println(blobString);
-        	
+        	for(int i = 0; i < blobStringArray.length; i++ ){
+        		System.out.println(blobStringArray[i]);
+        	}
+        	 	
             res.sendRedirect("/submit/data/?blob-key=" + blobKey.getKeyString());
         }
     }
