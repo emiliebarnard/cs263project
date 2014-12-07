@@ -19,7 +19,7 @@
     <div id="wrapper">
        	<div id="lostForm">
        	<h2>lost cats csv file upload</h2>
-        <form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
+        <form action="<%= blobstoreService.createUploadUrl("/uploadlost") %>" method="post" enctype="multipart/form-data">
             <input type="text" name="foo">
             <input type="file" name="myFile">
             <input type="submit" value="Submit">
@@ -28,7 +28,7 @@
     	
     	<div id="foundForm">
     	<h2>found cats csv file upload</h2>
-        <form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
+        <form action="<%= blobstoreService.createUploadUrl("/uploadfound") %>" method="post" enctype="multipart/form-data">
             <input type="text" name="foo">
             <input type="file" name="myFile">
             <input type="submit" value="Submit">

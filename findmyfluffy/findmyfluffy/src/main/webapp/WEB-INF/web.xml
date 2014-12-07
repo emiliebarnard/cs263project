@@ -66,23 +66,33 @@
     </servlet-mapping>
  
 <!--  blobstore  -->  
-    <servlet>
-    <servlet-name>Upload</servlet-name>
-    <servlet-class>findmyfluffy.findmyfluffy.Upload</servlet-class>
+  <servlet>
+    <servlet-name>uploadfound</servlet-name>
+    <servlet-class>findmyfluffy.findmyfluffy.UploadFound</servlet-class>
   </servlet>
   
   <servlet>
+    <servlet-name>uploadlost</servlet-name>
+    <servlet-class>findmyfluffy.findmyfluffy.UploadLost</servlet-class>
+  </servlet>
+  
+<!--   <servlet>
     <servlet-name>Serve</servlet-name>
     <servlet-class>findmyfluffy.findmyfluffy.Serve</servlet-class>
-  </servlet>
+  </servlet> -->
  
   <servlet-mapping>
-    <servlet-name>Upload</servlet-name>
-    <url-pattern>/upload</url-pattern>
+    <servlet-name>uploadfound</servlet-name>
+    <url-pattern>/uploadfound</url-pattern>
+  </servlet-mapping>
+	
+	  <servlet-mapping>
+    <servlet-name>uploadlost</servlet-name>
+    <url-pattern>/uploadlost</url-pattern>
   </servlet-mapping>
 
-  <servlet-mapping>
+<!--   <servlet-mapping>
     <servlet-name>Serve</servlet-name>
     <url-pattern>/serve</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>
