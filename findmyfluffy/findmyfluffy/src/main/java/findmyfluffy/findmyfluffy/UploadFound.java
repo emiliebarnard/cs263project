@@ -33,8 +33,13 @@ public class UploadFound extends HttpServlet {
         	//TO DO: add check for CSV file
         	String blobString =
         			   new String(blobstoreService.fetchData(blobKey, 0, BlobstoreService.MAX_BLOB_FETCH_SIZE-1));
-
-        	System.out.println(blobString);
+        	//parsing the string
+        	//TO DO: split this into it's own function called ParseString or something
+        	
+        	//TO DO: refactor code so we have a create lost/create found entry
+        	String[] blobStringArray = blobString.split("\n");
+        	
+        		System.out.println(blobString);
         	
             res.sendRedirect("/submit/data/?blob-key=" + blobKey.getKeyString());
         }
