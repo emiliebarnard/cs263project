@@ -46,6 +46,28 @@ dataType: "json",
 			return false;
     	}
     	
+    	function submitJSONfoundForm(){
+    		
+    		var lostForm = document.getElementById('foundFormInfo');
+    		var jsonInfo = ConvertFormToJSON(lostForm);
+    		 $.ajax({
+           		type: "POST",
+   				url: "/submit/found",
+   				data: JSON.stringify(jsonInfo),
+   				/*
+dataType: "json",
+				contentType: 'application/json',
+        		mimeType: 'application/json'
+*/
+			}).done(function() {
+                window.location.href = "/submit/found/";
+            }).fail(function(jqXHR, textStatus) {
+                alert("AJAX Failed with status " + textStatus);
+            });
+			
+			return false;
+    	}
+    	
 		$(document).ready(function () {
     
 		});
@@ -131,9 +153,10 @@ dataType: "json",
 	
 	<div id="foundForm">
 		<h2>found cat?</h2>
-		<form action="/submit/found" method="get">
+		<form id="foundFormInfo" onsubmit="return submitJSONfoundForm()">
 			<p>
 			cat's name: <input type="text" name="petname"><br>
+			<input type="checkbox" name="chip" value="chip"> microchipped?<br>
 			age: <input type="text" name="age"><br>
 			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
 			breed: <select name="breed">

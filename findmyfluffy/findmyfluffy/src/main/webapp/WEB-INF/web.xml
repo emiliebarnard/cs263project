@@ -55,4 +55,13 @@
         <servlet-name>addlostentry</servlet-name>
         <url-pattern>/submit/lost</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>addfoundentry</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.AddFoundEntryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addfoundentry</servlet-name>
+        <url-pattern>/submit/found</url-pattern>
+    </servlet-mapping>
 </web-app>

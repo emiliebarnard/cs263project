@@ -1,7 +1,6 @@
 package findmyfluffy.findmyfluffy;
 
 import findmyfluffy.findmyfluffy.Cat;
-import findmyfluffy.findmyfluffy.DatastoreInfo;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -15,7 +14,6 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -25,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class AddLostEntryServlet extends HttpServlet {
+public class AddFoundEntryServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
@@ -50,41 +48,42 @@ public class AddLostEntryServlet extends HttpServlet {
             
             //System.out.println(sb.toString());
  
-            Cat lostCatInfo = (Cat) gson.fromJson(sb.toString(), Cat.class);
+            Cat foundCatInfo = (Cat) gson.fromJson(sb.toString(), Cat.class);
             
             //System.out.println(lostCat.age);
             
           //TODO: have to add a check to see if these were left blank
       	  
       	  
-      	  String lostCatName = lostCatInfo.petname;
+      	  String foundCatName = foundCatInfo.petname;
       	  
-      	  Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
-      	  Entity lostCat = new Entity("lostcat", lostCatKey);
+      	  Key foundCatKey = KeyFactory.createKey("foundCat", foundCatName);
+      	  Entity foundCat = new Entity("foundcat", foundCatKey);
       	  
-      	  lostCat.setProperty("catname", lostCatName);
+      	  foundCat.setProperty("catname", foundCatName);
       	  
       	  boolean chipped = false;
       	  //System.out.println(lostCatInfo.chip);
-        if (lostCatInfo.chip.equals("chip")){
+        if (foundCatInfo.chip.equals("chip")){
           		  chipped = true;
          }
       	
-      	  lostCat.setProperty("microchip", chipped);
+      	  foundCat.setProperty("microchip", chipped);
       	  
   //*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
-      	  lostCat.setProperty("age", lostCatInfo.age);
-      	  lostCat.setProperty("sex", lostCatInfo.sex);
-      	  lostCat.setProperty("breed", lostCatInfo.breed);
-      	  lostCat.setProperty("color", lostCatInfo.color);
-      	  lostCat.setProperty("area", lostCatInfo.area);
-      	  lostCat.setProperty("contactname", lostCatInfo.contactname);
-      	  lostCat.setProperty("contactemail", lostCatInfo.contactemail);
+      	  foundCat.setProperty("age", foundCatInfo.age);
+      	  foundCat.setProperty("sex", foundCatInfo.sex);
+      	  foundCat.setProperty("breed", foundCatInfo.breed);
+      	  foundCat.setProperty("color", foundCatInfo.color);
+      	  foundCat.setProperty("area", foundCatInfo.area);
+      	  foundCat.setProperty("contactname", foundCatInfo.contactname);
+      	  foundCat.setProperty("contactemail", foundCatInfo.contactemail);
       	  
       	  
       	//put lost cat in datastore
-    	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-      	DatastoreInfo.datastore.put(lostCat);
+    	  //DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      	  //System.out.println(foundCatName);
+    	  DatastoreInfo.datastore.put(foundCat);
     	  
     	  //redirect to thank you page
     	 // resp.sendRedirect("/submit/lost/?catname=" + lostCatName);

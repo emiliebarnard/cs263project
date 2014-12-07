@@ -1,6 +1,6 @@
 package findmyfluffy.findmyfluffy;
 
-public class LostCat {
+public class Cat {
 	public String petname;
 	public String chip;
 	public String age;
