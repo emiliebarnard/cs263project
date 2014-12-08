@@ -1,5 +1,6 @@
 cs263project: Find My Fluffy
 ============
+Project can be found at http://findmyfluffy.appspot.com
 
 Repo for my course project for CS 263: Programming Language Runtime Systems at UC Santa Barbara.
 Find My Fluffy is a webservice intended to allow users to easily report lost and found cats, and will generate potential lost/found matched based on database entries.
@@ -12,7 +13,6 @@ This project will act as a stepping stone for the shelter I volunteer at before 
 
 ------------
 **The project is under /findmyfluffy/findmyfluffy
-I'm having issues moving folders around without breaking the project in Eclipse.
 
 
 NOTES:
