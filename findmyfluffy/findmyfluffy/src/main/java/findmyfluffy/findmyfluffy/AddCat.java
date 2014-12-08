@@ -9,6 +9,17 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 public class AddCat{
 	
+	public String isChipped(String info){
+		if (info == null){
+			return "false";
+		}
+		else if (info.toLowerCase().contains("chip") && !info.toLowerCase().contains("nochip")){
+			return "true";
+		}
+		else{
+			return "false";
+		}
+	}
 	public String findBreed(String info){
 		
 		if (info == null) {
@@ -23,7 +34,7 @@ public class AddCat{
 		else if (info.toLowerCase().contains("dlh")){
 			return "dlh";
 		}
-		else if (info.toLowerCase().contains("bengal")){
+		else if (info.toLowerCase().contains("bengal") || info.toLowerCase().contains("bengel")){
 			return "bengal";
 		}
 		else if (info.toLowerCase().contains("burmese")){
@@ -112,15 +123,19 @@ public class AddCat{
 	}
 	
 	public void addLostCatEntry(String lostCatName, String lostCatChip, String lostCatAge, String lostCatSex, String lostCatBreed, String lostCatColor, String lostCatArea, String lostCatContactname, String lostCatContactemail){
-    	  
-    	  Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
+		 
+		if (lostCatName == null || lostCatName.isEmpty()){
+			  lostCatName = "unkown";
+		  }  
+    	 
+		Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
     	  Entity lostCat = new Entity("lostcat", lostCatKey);
     	  
     	  lostCat.setProperty("catname", lostCatName);
     	  
     	  boolean chipped = false;
     	  //System.out.println(lostCatInfo.chip);
-      if (lostCatChip.equals("chip")){
+      if (lostCatChip.equals("true")){
         		  chipped = true;
        }
     	
@@ -143,14 +158,18 @@ public class AddCat{
 	
 	public void addFoundCatEntry(String foundCatName, String foundCatChip, String foundCatAge, String foundCatSex, String foundCatBreed, String foundCatColor, String foundCatArea, String foundCatContactname, String foundCatContactemail){
 
-		  Key foundCatKey = KeyFactory.createKey("foundCat", foundCatName);
+		  if (foundCatName == null || foundCatName.isEmpty()){
+			  foundCatName = "unkown";
+		  }
+		
+			Key foundCatKey = KeyFactory.createKey("foundCat", foundCatName);
 		  Entity foundCat = new Entity("foundcat", foundCatKey);
 
 		  foundCat.setProperty("catname", foundCatName);
 
 		  boolean chipped = false;
 		  //System.out.println(foundCatInfo.chip);
-	  if (foundCatChip.equals("chip")){
+	  if (foundCatChip.equals("true")){
 				  chipped = true;
 	   }
 

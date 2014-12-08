@@ -19,6 +19,9 @@
     <div id="wrapper">
        	<div id="lostForm">
        	<h2>lost cats csv file upload</h2>
+       	<p>files should be of the following form:<br>
+       	area lost, breed, color, additional details (including chip info), sex, age, catname, contact name, contact info
+       	</p>
         <form action="<%= blobstoreService.createUploadUrl("/uploadlost") %>" method="post" enctype="multipart/form-data">
             <input type="text" name="foo">
             <input type="file" name="myFile">
@@ -28,8 +31,8 @@
     	
     	<div id="foundForm">
     	<h2>found cats csv file upload</h2>
-    	<p>these should be of the following form:<br>
-    	catname, sex, age, description (breed & color), chipped? (true/false), contact name, contact info, area found
+    	<p>files should be of the following form:<br>
+    	cat name, sex, age, description (breed & color), chipped? (true/false), contact name, contact info, area found
     	</p>
         <form action="<%= blobstoreService.createUploadUrl("/uploadfound") %>" method="post" enctype="multipart/form-data">
             <input type="text" name="foo">
