@@ -42,17 +42,16 @@ public class UploadFound extends HttpServlet{
         	//split string by newlines
         	String[] blobStringArray = blobString.split("\n");
         	
-        	for(int i = 0; i < blobStringArray.length-1; i++ ){
+        	for(int i = 1; i < blobStringArray.length-1; i++ ){
         		//split each line by ","
         		String[] blobStringLineArray = blobStringArray[i].split(",");
         		
         		AddCat add = new AddCat();
-        		//name is at 1, sex at 5, age at 6, 
         		
         		//TO-DO: add checks around these
         		//Redo the way we get breeds/colors
         		//maybe add a function for this
-        		add.addFoundCatEntry(blobStringLineArray[1], "false", blobStringLineArray[6], blobStringLineArray[5], blobStringLineArray[7].substring(Math.max(0, blobStringLineArray[7].length() - 3)), blobStringLineArray[7].substring(0,Math.max(0, blobStringLineArray[7].length() - 4)), "unknown", "shelter", "contact shelter");
+        		add.addFoundCatEntry(blobStringLineArray[0], blobStringLineArray[4], blobStringLineArray[2], blobStringLineArray[1], add.findBreed(blobStringLineArray[3]), add.findColor(blobStringLineArray[3]), blobStringLineArray[7], blobStringLineArray[5], blobStringLineArray[6]);
         		//System.out.println("name: " + blobStringLineArray[1] + " age:" + blobStringLineArray[6] + ", sex: " + blobStringLineArray[5]);
         	}
         	 	

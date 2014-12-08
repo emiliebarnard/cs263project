@@ -9,6 +9,108 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 public class AddCat{
 	
+	public String findBreed(String info){
+		
+		if (info == null) {
+			return "";
+		}
+		else if (info.toLowerCase().contains("dsh")){
+			return "dsh";
+		}
+		else if (info.toLowerCase().contains("dmh")){
+			return "dmh";
+		}
+		else if (info.toLowerCase().contains("dlh")){
+			return "dlh";
+		}
+		else if (info.toLowerCase().contains("bengal")){
+			return "bengal";
+		}
+		else if (info.toLowerCase().contains("burmese")){
+			return "burmese";
+		}
+		else if (info.toLowerCase().contains("himi") || info.toLowerCase().contains("himalyan")){
+			return "himalayan";
+		}
+		else if (info.toLowerCase().contains("lynx")){
+			return "lynx";
+		}
+		else if (info.toLowerCase().contains("coon")){
+			return "maine coon";
+		}
+		else if (info.toLowerCase().contains("persian")){
+			return "persian";
+		}
+		else if (info.toLowerCase().contains("pixie bob")){
+			return "pixie bob";
+		}
+		else if (info.toLowerCase().contains("russian blue")){
+			return "russian blue";
+		}
+		else if (info.toLowerCase().contains("tonkinese")){
+			return "tonkinese";
+		}
+		else if (info.toLowerCase().contains("siamese")){
+			return "siamese";
+		}
+		else{
+			return "";
+		}
+		//might have to add more breeds
+		
+	}
+	
+	public String findColor(String info){
+		if (info == null) {
+			return "";
+		}
+		else if (info.toLowerCase().contains("tabby")){
+			if (info.toLowerCase().contains("orange")){
+				return "orange tabby";
+			}
+			else if (info.toLowerCase().contains("brown")){
+				return "brown tabby";
+			}
+			else if (info.toLowerCase().contains("grey") || info.toLowerCase().contains("gray")){
+				return "grey tabby";
+			}
+			else if (info.toLowerCase().contains("black")){
+				return "black tabby";
+			}
+			else{
+				return "tabby";
+			}	
+		}
+		else if (info.toLowerCase().contains("calico")){
+			return "calico";
+		}
+		else if (info.toLowerCase().contains("torti") || info.toLowerCase().contains("tortoiseshell") || info.toLowerCase().contains("torbi")){
+			return "tortoiseshell";
+		}
+		else if (info.toLowerCase().contains("seal")){
+			return "seal point";
+		}
+		else if (info.toLowerCase().contains("lynx")){
+			return "lynx";
+		}
+		else if (info.toLowerCase().contains("tuxedo") || (info.toLowerCase().contains("black") && info.toLowerCase().contains("white"))){
+			return "tuxedo";
+		}
+		else if (info.toLowerCase().contains("black")){
+			return "black";
+		}
+		else if (info.toLowerCase().contains("white")){
+			return "white";
+		}
+		else if (info.toLowerCase().contains("grey") || info.toLowerCase().contains("gray")){
+			return "grey";
+		}
+		else{
+			return "";
+		}
+		
+	}
+	
 	public void addLostCatEntry(String lostCatName, String lostCatChip, String lostCatAge, String lostCatSex, String lostCatBreed, String lostCatColor, String lostCatArea, String lostCatContactname, String lostCatContactemail){
     	  
     	  Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);

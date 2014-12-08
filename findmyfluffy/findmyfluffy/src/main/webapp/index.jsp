@@ -139,9 +139,12 @@ dataType: "json",
 				<option value="orangetabby">orange tabby</option>
 				<option value="browntabby">brown tabby</option>
 				<option value="greytabby">grey tabby</option>
+				<option value="blacktabby">black tabby</option>
 				<option value="tuxedo">tuxedo</option>
 				<option value="black">black</option>
 				<option value="sealpoint">seal point</option>
+				<option value="lynx">lynx</option>
+				<option value="lynx">grey</option>
 			</select>
 			<br>area last seen: <input type="text" name="area"><br>
 			your name: <input type="text" name="contactname"><br>
@@ -181,9 +184,12 @@ dataType: "json",
 				<option value="orangetabby">orange tabby</option>
 				<option value="browntabby">brown tabby</option>
 				<option value="greytabby">grey tabby</option>
+				<option value="blacktabby">black tabby</option>
 				<option value="tuxedo">tuxedo</option>
 				<option value="black">black</option>
 				<option value="sealpoint">seal point</option>
+				<option value="lynx">lynx</option>
+				<option value="lynx">grey</option>
 			</select>
 			<br>
 			area found: <input type="text" name="address"><br>

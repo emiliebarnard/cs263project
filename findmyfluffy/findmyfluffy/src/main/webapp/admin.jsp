@@ -28,6 +28,9 @@
     	
     	<div id="foundForm">
     	<h2>found cats csv file upload</h2>
+    	<p>these should be of the following form:<br>
+    	catname, sex, age, description (breed & color), chipped? (true/false), contact name, contact info, area found
+    	</p>
         <form action="<%= blobstoreService.createUploadUrl("/uploadfound") %>" method="post" enctype="multipart/form-data">
             <input type="text" name="foo">
             <input type="file" name="myFile">
