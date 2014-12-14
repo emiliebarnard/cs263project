@@ -1,5 +1,6 @@
 package findmyfluffy.findmyfluffy;
 
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 import findmyfluffy.findmyfluffy.AddCat;
 import findmyfluffy.findmyfluffy.Cat;
 
@@ -8,12 +9,12 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-
 import com.google.gson.Gson;
-
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -65,9 +66,12 @@ public class AddFoundEntryServlet extends HttpServlet {
       	  
       	  String chipped = "false";
       	  //System.out.println(lostCatInfo.chip);
-        if (foundCatInfo.chip.equals("chip")){
+      	  
+      	if (foundCatInfo.chip != null && !foundCatInfo.chip.isEmpty()) {
+      		if (foundCatInfo.chip.equals("chip")){
           		  chipped = "true";
-         }
+      		}
+      	}
       	
       	  //foundCat.setProperty("microchip", chipped);
       	  
@@ -84,9 +88,20 @@ public class AddFoundEntryServlet extends HttpServlet {
       	//put lost cat in datastore
     	  //DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       	  //System.out.println(foundCatName);
-      	  AddCat add = new AddCat();
-      	  add.addFoundCatEntry(foundCatName, chipped, foundCatInfo.age, foundCatInfo.sex, foundCatInfo.breed, foundCatInfo.color, foundCatInfo.area, foundCatInfo.contactname, foundCatInfo.contactemail);
-      	  
+      	  //AddCat add = new AddCat();
+      	  //add.addFoundCatEntry(foundCatName, chipped, foundCatInfo.age, foundCatInfo.sex, foundCatInfo.breed, foundCatInfo.color, foundCatInfo.area, foundCatInfo.contactname, foundCatInfo.contactemail);
+        Queue queue = QueueFactory.getDefaultQueue();
+//        System.out.println(foundCatName);
+//        System.out.println(chipped);
+//        System.out.println(foundCatInfo.age);
+//        System.out.println(foundCatInfo.sex);
+//        System.out.println(foundCatInfo.breed);
+//        System.out.println(foundCatInfo.color);
+//        System.out.println(foundCatInfo.area);
+//        System.out.println(foundCatInfo.contactname);
+//        System.out.println(foundCatInfo.contactemail);
+        queue.add(withUrl("/foundcatadder").param("name", foundCatName).param("chip", chipped).param("age", foundCatInfo.age).param("sex", foundCatInfo.sex).param("breed", foundCatInfo.breed).param("color", foundCatInfo.color).param("area", foundCatInfo.area).param("contactname", foundCatInfo.contactname).param("contactemail", foundCatInfo.contactemail));
+
     	  //DatastoreInfo.datastore.put(foundCat);
     	  
     	  //redirect to thank you page

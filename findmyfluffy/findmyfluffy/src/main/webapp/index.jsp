@@ -192,7 +192,7 @@ dataType: "json",
 				<option value="lynx">grey</option>
 			</select>
 			<br>
-			area found: <input type="text" name="address"><br>
+			area found: <input type="text" name="area"><br>
 			your name: <input type="text" name="contactname"><br>
 			your phone or e-mail: <input type="text" name="contactemail">
 			</p>

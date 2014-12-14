@@ -3,6 +3,7 @@ package findmyfluffy.findmyfluffy;
 import findmyfluffy.findmyfluffy.Cat;
 import findmyfluffy.findmyfluffy.DatastoreInfo;
 
+import com.google.appengine.api.datastore.DatastoreFailureException;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -12,9 +13,10 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 
-
-
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,20 +57,24 @@ public class AddLostEntryServlet extends HttpServlet {
             //System.out.println(lostCat.age);
             
           //TODO: have to add a check to see if these were left blank
+//          Queue queue = QueueFactory.getDefaultQueue();
+//          
+//          try {
       	  
-      	  
-      	  String lostCatName = lostCatInfo.petname;
+        	    String lostCatName = lostCatInfo.petname;
       	  
       	  //Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
 //      	  Entity lostCat = new Entity("lostcat", lostCatKey);
 //      	  
 //      	  lostCat.setProperty("catname", lostCatName);
       	  
-      	  String chipped = "false";
-      	  //System.out.println(lostCatInfo.chip);
-        if (lostCatInfo.chip.equals("chip")){
-          		  chipped = "true";
-         }
+        	    String chipped = "false";
+            	  //System.out.println(lostCatInfo.chip);
+              	if (lostCatInfo.chip != null && !lostCatInfo.chip.isEmpty()) {
+              		if (lostCatInfo.chip.equals("chip")){
+                  		  chipped = "true";
+              		}
+              	}
       	
 //      	  lostCat.setProperty("microchip", chipped);
 //      	  
@@ -86,9 +92,12 @@ public class AddLostEntryServlet extends HttpServlet {
     	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       	//DatastoreInfo.datastore.put(lostCat);
       	
-      	
-      	  AddCat add = new AddCat();
-    	  add.addLostCatEntry(lostCatName, chipped, lostCatInfo.age, lostCatInfo.sex, lostCatInfo.breed, lostCatInfo.color, lostCatInfo.area, lostCatInfo.contactname, lostCatInfo.contactemail);
+      		
+        Queue queue = QueueFactory.getDefaultQueue();
+        queue.add(withUrl("/lostcatadder").param("name", lostCatName).param("chip", chipped).param("age", lostCatInfo.age).param("sex", lostCatInfo.sex).param("breed", lostCatInfo.breed).param("color", lostCatInfo.color).param("area", lostCatInfo.area).param("contactname", lostCatInfo.contactname).param("contactemail", lostCatInfo.contactemail));
+        
+      	  //AddCat add = new AddCat();
+    	  //add.addLostCatEntry(lostCatName, chipped, lostCatInfo.age, lostCatInfo.sex, lostCatInfo.breed, lostCatInfo.color, lostCatInfo.area, lostCatInfo.contactname, lostCatInfo.contactemail);
     	  
     	  
     	  //redirect to thank you page
@@ -98,7 +107,8 @@ public class AddLostEntryServlet extends HttpServlet {
             ex.printStackTrace();
         }
 	  
-
+//	  	} catch (DatastoreFailureException e) {
+//	  	}
 
 	  //TODO: have to add a check to see if these were left blank
 	  

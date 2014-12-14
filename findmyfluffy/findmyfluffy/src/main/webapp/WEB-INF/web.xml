@@ -90,6 +90,26 @@
     <servlet-name>uploadlost</servlet-name>
     <url-pattern>/uploadlost</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+       <servlet-name>lostcatadder</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.LostCatAdder</servlet-class>
+  </servlet>
+        
+  <servlet-mapping>
+      <servlet-name>lostcatadder</servlet-name>
+      <url-pattern>/lostcatadder</url-pattern>
+   </servlet-mapping>
+   
+     <servlet-mapping>
+      <servlet-name>foundcatadder</servlet-name>
+      <url-pattern>/foundcatadder</url-pattern>
+   </servlet-mapping>
+   
+     <servlet>
+       <servlet-name>foundcatadder</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.FoundCatAdder</servlet-class>
+  </servlet>
 
 <!--   <servlet-mapping>
     <servlet-name>Serve</servlet-name>
