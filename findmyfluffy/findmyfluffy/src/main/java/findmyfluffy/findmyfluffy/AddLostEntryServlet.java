@@ -11,8 +11,8 @@ import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-
 import com.google.gson.Gson;
+
 
 
 
@@ -59,32 +59,37 @@ public class AddLostEntryServlet extends HttpServlet {
       	  
       	  String lostCatName = lostCatInfo.petname;
       	  
-      	  Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
-      	  Entity lostCat = new Entity("lostcat", lostCatKey);
+      	  //Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
+//      	  Entity lostCat = new Entity("lostcat", lostCatKey);
+//      	  
+//      	  lostCat.setProperty("catname", lostCatName);
       	  
-      	  lostCat.setProperty("catname", lostCatName);
-      	  
-      	  boolean chipped = false;
+      	  String chipped = "false";
       	  //System.out.println(lostCatInfo.chip);
         if (lostCatInfo.chip.equals("chip")){
-          		  chipped = true;
+          		  chipped = "true";
          }
       	
-      	  lostCat.setProperty("microchip", chipped);
-      	  
-  //*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
-      	  lostCat.setProperty("age", lostCatInfo.age);
-      	  lostCat.setProperty("sex", lostCatInfo.sex);
-      	  lostCat.setProperty("breed", lostCatInfo.breed);
-      	  lostCat.setProperty("color", lostCatInfo.color);
-      	  lostCat.setProperty("area", lostCatInfo.area);
-      	  lostCat.setProperty("contactname", lostCatInfo.contactname);
-      	  lostCat.setProperty("contactemail", lostCatInfo.contactemail);
+//      	  lostCat.setProperty("microchip", chipped);
+//      	  
+//  //*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
+//      	  lostCat.setProperty("age", lostCatInfo.age);
+//      	  lostCat.setProperty("sex", lostCatInfo.sex);
+//      	  lostCat.setProperty("breed", lostCatInfo.breed);
+//      	  lostCat.setProperty("color", lostCatInfo.color);
+//      	  lostCat.setProperty("area", lostCatInfo.area);
+//      	  lostCat.setProperty("contactname", lostCatInfo.contactname);
+//      	  lostCat.setProperty("contactemail", lostCatInfo.contactemail);
       	  
       	  
       	//put lost cat in datastore
     	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-      	DatastoreInfo.datastore.put(lostCat);
+      	//DatastoreInfo.datastore.put(lostCat);
+      	
+      	
+      	  AddCat add = new AddCat();
+    	  add.addLostCatEntry(lostCatName, chipped, lostCatInfo.age, lostCatInfo.sex, lostCatInfo.breed, lostCatInfo.color, lostCatInfo.area, lostCatInfo.contactname, lostCatInfo.contactemail);
+    	  
     	  
     	  //redirect to thank you page
     	 // resp.sendRedirect("/submit/lost/?catname=" + lostCatName);

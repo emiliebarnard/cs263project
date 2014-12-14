@@ -1,5 +1,6 @@
 package findmyfluffy.findmyfluffy;
 
+import findmyfluffy.findmyfluffy.AddCat;
 import findmyfluffy.findmyfluffy.Cat;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -57,33 +58,36 @@ public class AddFoundEntryServlet extends HttpServlet {
       	  
       	  String foundCatName = foundCatInfo.petname;
       	  
-      	  Key foundCatKey = KeyFactory.createKey("foundCat", foundCatName);
-      	  Entity foundCat = new Entity("foundcat", foundCatKey);
+      	  //Key foundCatKey = KeyFactory.createKey("foundCat", foundCatName);
+      	  //Entity foundCat = new Entity("foundcat", foundCatKey);
       	  
-      	  foundCat.setProperty("catname", foundCatName);
+      	  //foundCat.setProperty("catname", foundCatName);
       	  
-      	  boolean chipped = false;
+      	  String chipped = "false";
       	  //System.out.println(lostCatInfo.chip);
         if (foundCatInfo.chip.equals("chip")){
-          		  chipped = true;
+          		  chipped = "true";
          }
       	
-      	  foundCat.setProperty("microchip", chipped);
+      	  //foundCat.setProperty("microchip", chipped);
       	  
   //*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
-      	  foundCat.setProperty("age", foundCatInfo.age);
-      	  foundCat.setProperty("sex", foundCatInfo.sex);
-      	  foundCat.setProperty("breed", foundCatInfo.breed);
-      	  foundCat.setProperty("color", foundCatInfo.color);
-      	  foundCat.setProperty("area", foundCatInfo.area);
-      	  foundCat.setProperty("contactname", foundCatInfo.contactname);
-      	  foundCat.setProperty("contactemail", foundCatInfo.contactemail);
-      	  
+//      	  foundCat.setProperty("age", foundCatInfo.age);
+//      	  foundCat.setProperty("sex", foundCatInfo.sex);
+//      	  foundCat.setProperty("breed", foundCatInfo.breed);
+//      	  foundCat.setProperty("color", foundCatInfo.color);
+//      	  foundCat.setProperty("area", foundCatInfo.area);
+//      	  foundCat.setProperty("contactname", foundCatInfo.contactname);
+//      	  foundCat.setProperty("contactemail", foundCatInfo.contactemail);
+//      	  
       	  
       	//put lost cat in datastore
     	  //DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       	  //System.out.println(foundCatName);
-    	  DatastoreInfo.datastore.put(foundCat);
+      	  AddCat add = new AddCat();
+      	  add.addFoundCatEntry(foundCatName, chipped, foundCatInfo.age, foundCatInfo.sex, foundCatInfo.breed, foundCatInfo.color, foundCatInfo.area, foundCatInfo.contactname, foundCatInfo.contactemail);
+      	  
+    	  //DatastoreInfo.datastore.put(foundCat);
     	  
     	  //redirect to thank you page
     	 // resp.sendRedirect("/submit/lost/?catname=" + lostCatName);
