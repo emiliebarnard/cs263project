@@ -29,17 +29,19 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AddLostEntryServlet extends HttpServlet {
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
-//		doPost(request, response);
+		//nothing to get
 	}	
 	
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
+	  
+	  //System.out.println("here");
 	  //resp.setContentType("application/json");
 		
-//		System.out.println("stuff: " + req.getParameter("jsonInfo"));
+		System.out.println("stuff: " + req);
 
 	  	  Gson gson = new Gson();
 	  	  
@@ -92,9 +94,23 @@ public class AddLostEntryServlet extends HttpServlet {
     	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       	//DatastoreInfo.datastore.put(lostCat);
       	
-      		
+      	//this calls the function to add the cat using the task queue	
         Queue queue = QueueFactory.getDefaultQueue();
-        queue.add(withUrl("/lostcatadder").param("name", lostCatName).param("chip", chipped).param("age", lostCatInfo.age).param("sex", lostCatInfo.sex).param("breed", lostCatInfo.breed).param("color", lostCatInfo.color).param("area", lostCatInfo.area).param("contactname", lostCatInfo.contactname).param("contactemail", lostCatInfo.contactemail));
+//       System.out.println("before queue");
+//     System.out.println(lostCatName);
+//     System.out.println(chipped);
+//     System.out.println(lostCatInfo.age);
+//     System.out.println(lostCatInfo.sex);
+//     System.out.println(lostCatInfo.breed);
+//     System.out.println(lostCatInfo.color);
+//     System.out.println(lostCatInfo.area);
+//     System.out.println(lostCatInfo.contactname);
+//     System.out.println(lostCatInfo.contactemail);
+        
+        //queue.add(withUrl("/lostcatadder").param("name", lostCatName).param("chip", chipped).param("age", lostCatInfo.age).param("sex", lostCatInfo.sex).param("breed", lostCatInfo.breed).param("color", lostCatInfo.color).param("area", lostCatInfo.area).param("contactname", lostCatInfo.contactname).param("contactemail", lostCatInfo.contactemail));
+       System.out.println("after queue");
+        //once that task is sent off, then we also call a function to find matches using lostCatInfo:
+        
         
       	  //AddCat add = new AddCat();
     	  //add.addLostCatEntry(lostCatName, chipped, lostCatInfo.age, lostCatInfo.sex, lostCatInfo.breed, lostCatInfo.color, lostCatInfo.area, lostCatInfo.contactname, lostCatInfo.contactemail);

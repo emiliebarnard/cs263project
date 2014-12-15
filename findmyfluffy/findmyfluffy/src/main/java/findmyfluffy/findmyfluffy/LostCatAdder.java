@@ -69,7 +69,7 @@ public class LostCatAdder extends HttpServlet {
   	  
   	//put lost cat in datastore
 	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-  	System.out.println("here!");
+//  	System.out.println("here!");
   	DatastoreInfo.datastore.put(lostCat);
 
 //        String key = request.getParameter("key");

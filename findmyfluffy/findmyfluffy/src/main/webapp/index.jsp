@@ -25,20 +25,25 @@
     	}
     	
     	function submitJSONlostForm(){
-    		
+    		alert("in submit lost form");
     		var lostForm = document.getElementById('lostFormInfo');
     		var jsonInfo = ConvertFormToJSON(lostForm);
+/*     		alert(JSON.stringify(jsonInfo)); */
     		 $.ajax({
            		type: "POST",
    				url: "/submit/lost",
-   				data: JSON.stringify(jsonInfo),
+   				data: JSON.stringify(jsonInfo)
    				/*
 dataType: "json",
 				contentType: 'application/json',
         		mimeType: 'application/json'
 */
 			}).done(function() {
+				alert("before findMatchLost");
+				findMatchLost(jsonInfo);
+				alert("after findMatchLost");
                 window.location.href = "/submit/lost/?catname=" + document.getElementById('lostpetname').value ;
+                
             }).fail(function(jqXHR, textStatus) {
                 alert("AJAX Failed with status " + textStatus);
             });
@@ -53,7 +58,7 @@ dataType: "json",
     		 $.ajax({
            		type: "POST",
    				url: "/submit/found",
-   				data: JSON.stringify(jsonInfo),
+   				data: JSON.stringify(jsonInfo)
    				/*
 dataType: "json",
 				contentType: 'application/json',
@@ -61,6 +66,72 @@ dataType: "json",
 */
 			}).done(function() {
                 window.location.href = "/submit/found/";
+                findMatchFound(jsonInfo);
+            }).fail(function(jqXHR, textStatus) {
+                alert("AJAX Failed with status " + textStatus);
+            });
+			
+			return false;
+    	}
+    	
+    	function success(){
+	    	alert("success")
+    	}
+    	
+    	function findMatchLost(){
+    		alert("start of findMatchLost");
+    		$.get( "/matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + document.getElementById('sex:checked').value + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function() {
+				alert( "success");
+			}).
+				done(function() {
+					alert( "second success" );
+				})
+				.fail(function() {
+					alert( "error" );
+					})
+				.always(function() {
+					alert( "finished" );
+			});
+    		/* alert(JSON.stringify(jsonInfo)); */
+    		/*
+alert("in findMatchLost");
+    		 $.ajax({
+           		type: "GET",
+   				url: "/matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + document.getElementById('sex:checked').value + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value,
+   				data: JSON.stringify(jsonInfo),
+				cache: false,
+				success: success,
+				dataType: "json"
+   				/*
+dataType: "json",
+				contentType: 'application/json',
+        		mimeType: 'application/json'
+*/
+			}).done(function() {
+                alert("done of findMatchLost");
+            }).fail(function(jqXHR, textStatus) {
+                alert("AJAX Failed with status " + textStatus);
+            });
+			
+			return false;
+*/
+    	}
+    	
+		function findMatchFound(jsonInfo){
+    		 $.ajax({
+           		type: "GET",
+   				url: "/matches/found/?n=" + document.getElementById('foundpetname').value + "&chip=" + $('#fchip').prop('checked').toString() + "&age=" + document.getElementById('fage').value + "&s=" + document.getElementById('fsex:checked').value + "&b=" + document.getElementById('fbreed').value + "&c=" + document.getElementById('fcolor').value + "&a=" + document.getElementById('farea').value + "&cn=" + document.getElementById('fcontactname').value + "&ce=" +document.getElementById('fcontactemail').value,
+   				data: JSON.stringify(jsonInfo),
+				cache: false,
+				success: success,
+				dataType: "json"
+   				/*
+dataType: "json",
+				contentType: 'application/json',
+        		mimeType: 'application/json'
+*/
+			}).done(function() {
+                //put stuff here
             }).fail(function(jqXHR, textStatus) {
                 alert("AJAX Failed with status " + textStatus);
             });
@@ -114,10 +185,10 @@ dataType: "json",
 		<form id="lostFormInfo" onsubmit="return submitJSONlostForm()">
 			<p>
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
-			<input type="checkbox" name="chip" value="chip"> microchipped?<br>
-			age: <input type="text" name="age"><br>
-			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
-			breed: <select name="breed">
+			<input type="checkbox" name="chip" value="chip" id="chip"> microchipped?<br>
+			age: <input type="text" name="age" id="age"><br>
+			sex: <input type="radio" id="sex" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
+			breed: <select name="breed" id="breed">
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>
 				<option value="dlh">domestic long hair</option>
@@ -132,7 +203,7 @@ dataType: "json",
 				<option value="tonkinese">tonkinese</option>
 				<option value="siamese">siamese</option>
 			</select><br>
-			primary coloring: <select name="color">
+			primary coloring: <select name="color" id="color">
 				<option value="white">white</option>
 				<option value="calico">calico</option>
 				<option value="tortoiseshell">tortoiseshell</option>
@@ -146,9 +217,9 @@ dataType: "json",
 				<option value="lynx">lynx</option>
 				<option value="lynx">grey</option>
 			</select>
-			<br>area last seen: <input type="text" name="area"><br>
-			your name: <input type="text" name="contactname"><br>
-			your phone or e-mail: <input type="text" name="contactemail">
+			<br>area last seen: <input type="text" name="area" id="area"><br>
+			your name: <input type="text" name="contactname" id="contactname"><br>
+			your phone or e-mail: <input type="text" name="contactemail" id="contactemail">
 			</p>
 		<input type="submit" value="submit">
 		</form>
@@ -158,11 +229,11 @@ dataType: "json",
 		<h2>found cat?</h2>
 		<form id="foundFormInfo" onsubmit="return submitJSONfoundForm()">
 			<p>
-			cat's name: <input type="text" name="petname"><br>
-			<input type="checkbox" name="chip" value="chip"> microchipped?<br>
-			age: <input type="text" name="age"><br>
-			sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
-			breed: <select name="breed">
+			cat's name: <input type="text" name="petname" id="foundpetname"><br>
+			<input type="checkbox" name="chip" value="chip" id="fchip"> microchipped?<br>
+			age: <input type="text" name="age" id="fage"><br>
+			sex: <input type="radio" id="fsex" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
+			breed: <select name="breed" id="fbreed">
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>
 				<option value="dlh">domestic long hair</option>
@@ -177,7 +248,7 @@ dataType: "json",
 				<option value="tonkinese">tonkinese</option>
 				<option value="siamese">siamese</option>
 			</select><br>
-			primary coloring: <select name="color">
+			primary coloring: <select name="color" id="fcolor">
 				<option value="white">white</option>
 				<option value="calico">calico</option>
 				<option value="tortoiseshell">tortoiseshell</option>
@@ -191,10 +262,10 @@ dataType: "json",
 				<option value="lynx">lynx</option>
 				<option value="lynx">grey</option>
 			</select>
-			<br>
-			area found: <input type="text" name="area"><br>
-			your name: <input type="text" name="contactname"><br>
-			your phone or e-mail: <input type="text" name="contactemail">
+			<br>area last seen: <input type="text" name="area" id="farea"><br>
+			your name: <input type="text" name="contactname" id="fcontactname"><br>
+			your phone or e-mail: <input type="text" name="contactemail" id="fcontactemail">
+
 			</p>
 		<input type="submit" value="submit">
 		</form>

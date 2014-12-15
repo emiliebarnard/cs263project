@@ -64,6 +64,44 @@
         <servlet-name>addfoundentry</servlet-name>
         <url-pattern>/submit/found</url-pattern>
     </servlet-mapping>
+    
+      <servlet>
+       <servlet-name>lostcatadder</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.LostCatAdder</servlet-class>
+  </servlet>
+        
+  <servlet-mapping>
+      <servlet-name>lostcatadder</servlet-name>
+      <url-pattern>/lostcatadder</url-pattern>
+   </servlet-mapping>
+   
+     <servlet-mapping>
+      <servlet-name>foundcatadder</servlet-name>
+      <url-pattern>/foundcatadder</url-pattern>
+   </servlet-mapping>
+   
+     <servlet>
+       <servlet-name>foundcatadder</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.FoundCatAdder</servlet-class>
+  </servlet>
+    
+    <servlet>
+        <servlet-name>matchlost</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.MatchLost</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>matchlost</servlet-name>
+        <url-pattern>/matches/lost/</url-pattern>
+    </servlet-mapping>
+    
+        <servlet>
+        <servlet-name>matchfound</servlet-name>
+        <servlet-class>findmyfluffy.findmyfluffy.MatchFound</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>matchfound</servlet-name>
+        <url-pattern>/matches/found/</url-pattern>
+    </servlet-mapping>
  
 <!--  blobstore  -->  
   <servlet>
@@ -91,25 +129,6 @@
     <url-pattern>/uploadlost</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-       <servlet-name>lostcatadder</servlet-name>
-        <servlet-class>findmyfluffy.findmyfluffy.LostCatAdder</servlet-class>
-  </servlet>
-        
-  <servlet-mapping>
-      <servlet-name>lostcatadder</servlet-name>
-      <url-pattern>/lostcatadder</url-pattern>
-   </servlet-mapping>
-   
-     <servlet-mapping>
-      <servlet-name>foundcatadder</servlet-name>
-      <url-pattern>/foundcatadder</url-pattern>
-   </servlet-mapping>
-   
-     <servlet>
-       <servlet-name>foundcatadder</servlet-name>
-        <servlet-class>findmyfluffy.findmyfluffy.FoundCatAdder</servlet-class>
-  </servlet>
 
 <!--   <servlet-mapping>
     <servlet-name>Serve</servlet-name>
