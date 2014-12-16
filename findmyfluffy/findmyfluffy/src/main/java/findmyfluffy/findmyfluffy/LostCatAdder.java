@@ -1,14 +1,5 @@
 package findmyfluffy.findmyfluffy;
 
-import java.util.Date;
-import java.util.logging.Level;
-
-import com.google.appengine.api.memcache.*;
-
-import java.lang.Object;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +8,8 @@ import javax.servlet.ServletException;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import findmyfluffy.findmyfluffy.DatastoreInfo;
 
@@ -29,8 +17,6 @@ import findmyfluffy.findmyfluffy.DatastoreInfo;
 public class LostCatAdder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
-    	System.out.println("in lost cat adder queue");
     	
     	String lostCatName = request.getParameter("name");
     	String lostCatChip = request.getParameter("chip");
@@ -52,13 +38,11 @@ public class LostCatAdder extends HttpServlet {
   	  lostCat.setProperty("catname", lostCatName.toLowerCase());
   	  
   	  boolean chipped = false;
-  	  //System.out.println(lostCatInfo.chip);
     if (lostCatChip.equals("true")){
       		  chipped = true;
      }
   	
   	  lostCat.setProperty("microchip", chipped);
-  	  
   	  lostCat.setProperty("age", lostCatAge);
   	  lostCat.setProperty("sex", lostCatSex);
   	  lostCat.setProperty("breed", lostCatBreed);
@@ -69,30 +53,6 @@ public class LostCatAdder extends HttpServlet {
   	  
   	  
   	//put lost cat in datastore
-	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-//  	System.out.println("here!");
   	DatastoreInfo.datastore.put(lostCat);
-
-//        String key = request.getParameter("key");
-//        String value = request.getParameter("value");
-//        
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        Date date = new Date();
-//        
-//        Entity ourInfo = new Entity("TaskData");
-//        ourInfo.setProperty("key", key);
-//        ourInfo.setProperty("value", value);
-////        ourInfo.setProperty("date", dateFormat.format(date));
-//        ourInfo.setProperty("date", date);
-//        
-//        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-//        datastore.put(ourInfo);
-//        
-//        
-//        MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-//        syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-//        
-//        syncCache.put(key, value); // populate cache
-        
     }
 }

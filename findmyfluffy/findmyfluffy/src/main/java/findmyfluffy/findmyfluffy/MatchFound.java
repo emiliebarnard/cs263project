@@ -29,14 +29,14 @@ public class MatchFound extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		String petname = req.getParameter("n").toLowerCase();
-		String chip = req.getParameter("chip");
+//		String chip = req.getParameter("chip");
 		String age = req.getParameter("age");
 		String sex = req.getParameter("s");
 		String breed = req.getParameter("b");
 		String color = req.getParameter("c");
 		String area = req.getParameter("a");
-		String contactname = req.getParameter("cn");
-		String contactemail = req.getParameter("ce");
+//		String contactname = req.getParameter("cn");
+//		String contactemail = req.getParameter("ce");
 		
       	if (sex.equals("m")){
         	sex = "male";
@@ -45,8 +45,6 @@ public class MatchFound extends HttpServlet {
         if (sex.equals("f")){
         	sex = "female";
         }
-		
-		//now we need to search the datastore for matches
 
 		Filter nameFilter = new FilterPredicate("catname", FilterOperator.EQUAL, petname);
 		Filter ageFilter = new FilterPredicate("age", FilterOperator.EQUAL, age);
@@ -85,14 +83,7 @@ public class MatchFound extends HttpServlet {
 		PreparedQuery pq = DatastoreInfo.datastore.prepare(q);
 		List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(10));
 		
-		//this gets each of the entities
-//		Gson gson = new Gson();
-//		String json = new String();
-//		for (int i = 0; i < results.size(); i++) {
-//		    Entity element = results.get(i);
-//		    //json += gson.toJson(element);
-//		}
-		
+		//Convert to GSON, then JSON
 		Gson gson = new Gson();
         String json = gson.toJson(results);
         resp.setContentType("application/json");

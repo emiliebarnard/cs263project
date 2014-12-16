@@ -1,6 +1,5 @@
 package findmyfluffy.findmyfluffy;
 
-import findmyfluffy.findmyfluffy.DatastoreInfo;
 import findmyfluffy.findmyfluffy.MemCacheInfo;
 import findmyfluffy.findmyfluffy.AddCat;
 
@@ -14,12 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreInputStream;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.memcache.ErrorHandlers;
-import com.google.appengine.api.memcache.MemcacheService;
-import com.google.appengine.api.memcache.MemcacheServiceFactory;
 
 public class UploadFound extends HttpServlet{
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
@@ -35,36 +31,29 @@ public class UploadFound extends HttpServlet{
             res.sendRedirect("/");
         } else {
         	//want to add info to our datastore
-        	
-        	//TO DO: add check for CSV file
+        	//get CSV file
         	String blobString =
         			   new String(blobstoreService.fetchData(blobKey, 0, BlobstoreService.MAX_BLOB_FETCH_SIZE-1));
         	//parsing the string
-        	//TO DO: split this into it's own function called ParseString or something
-        	
-        	//TO DO: refactor code so we have a create lost/create found entry
-        	
         	//split string by newlines
         	String[] blobStringArray = blobString.split("\n");
         	
         	String firstCatName = "meow";
+    		AddCat add = new AddCat();
         	
         	for(int i = 1; i < blobStringArray.length-1; i++ ){
         		//split each line by ","
         		String[] blobStringLineArray = blobStringArray[i].split(",");
         		
-        		AddCat add = new AddCat();
         		if (i==1){
         			firstCatName = blobStringLineArray[0];
         		}
         		
-        		//TO-DO: add checks around these
-        		//Redo the way we get breeds/colors
-        		//maybe add a function for this
+        		//this adds the info
         		add.addFoundCatEntry(blobStringLineArray[0], blobStringLineArray[4], blobStringLineArray[2], blobStringLineArray[1], add.findBreed(blobStringLineArray[3]), add.findColor(blobStringLineArray[3]), blobStringLineArray[7], blobStringLineArray[5], blobStringLineArray[6]);
-        		//System.out.println("name: " + blobStringLineArray[1] + " age:" + blobStringLineArray[6] + ", sex: " + blobStringLineArray[5]);
         	}
         	
+        	//Memcache add:
         	MemCacheInfo.syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO)); 
         	MemCacheInfo.syncCache.put(blobKey.getKeyString(), firstCatName); // populate cache with name of the first cat
         	 	

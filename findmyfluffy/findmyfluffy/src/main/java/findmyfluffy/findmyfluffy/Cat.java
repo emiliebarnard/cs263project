@@ -10,4 +10,5 @@ public class Cat {
 	public String area;
 	public String contactname;
 	public String contactemail;
+	//meow! =^.^=
 }

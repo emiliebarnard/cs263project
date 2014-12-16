@@ -2,7 +2,6 @@ package findmyfluffy.findmyfluffy;
 
 import findmyfluffy.findmyfluffy.DatastoreInfo;
 
-
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -153,9 +152,7 @@ public class AddCat{
     	  lostCat.setProperty("contactname", lostCatContactname);
     	  lostCat.setProperty("contactemail", lostCatContactemail);
     	  
-    	  
     	//put lost cat in datastore
-  	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     	DatastoreInfo.datastore.put(lostCat);
 	}
 	
@@ -172,7 +169,6 @@ public class AddCat{
 		  foundCat.setProperty("catname", foundCatName.toLowerCase());
 
 		  boolean chipped = false;
-		  //System.out.println(foundCatInfo.chip);
 	  if (foundCatChip.equals("true")){
 				  chipped = true;
 	   }
@@ -194,7 +190,6 @@ public class AddCat{
 
 
 		//put found cat in datastore
-	 // DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		DatastoreInfo.datastore.put(foundCat);
 	}
 }
