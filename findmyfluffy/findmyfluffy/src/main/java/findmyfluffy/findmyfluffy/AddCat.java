@@ -131,7 +131,7 @@ public class AddCat{
 		Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
     	  Entity lostCat = new Entity("lostcat", lostCatKey);
     	  
-    	  lostCat.setProperty("catname", lostCatName);
+    	  lostCat.setProperty("catname", lostCatName.toLowerCase());
     	  
     	  boolean chipped = false;
     	  //System.out.println(lostCatInfo.chip);
@@ -166,7 +166,7 @@ public class AddCat{
 			Key foundCatKey = KeyFactory.createKey("foundCat", foundCatName);
 		  Entity foundCat = new Entity("foundcat", foundCatKey);
 
-		  foundCat.setProperty("catname", foundCatName);
+		  foundCat.setProperty("catname", foundCatName.toLowerCase());
 
 		  boolean chipped = false;
 		  //System.out.println(foundCatInfo.chip);

@@ -44,10 +44,10 @@ public class LostCatAdder extends HttpServlet {
 			  lostCatName = "unkown";
 		  }  
   	 
-		Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
-  	  Entity lostCat = new Entity("lostcat", lostCatKey);
+    	Key lostCatKey = KeyFactory.createKey("lostCat", lostCatName);
+  	  	Entity lostCat = new Entity("lostcat", lostCatKey);
   	  
-  	  lostCat.setProperty("catname", lostCatName);
+  	  lostCat.setProperty("catname", lostCatName.toLowerCase());
   	  
   	  boolean chipped = false;
   	  //System.out.println(lostCatInfo.chip);

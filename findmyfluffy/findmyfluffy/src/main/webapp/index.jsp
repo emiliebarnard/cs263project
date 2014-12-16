@@ -84,9 +84,10 @@ dataType: "json",
     	function findMatchLost(){
     		alert("start of findMatchLost");
     		$.get("matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + $('input:radio[name=sex]:checked').val() + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function(data) {
-				alert( "data: " + data);
+				alert( "data: " + JSON.stringify(data));
 				$( "#wrapper" ).empty();
-				$( "#wrapper" ).append( "<p>" + data +"</p>" );
+				$( "#wrapper" ).append("<h2>Potentional Matches:</h2>");
+				$( "#wrapper" ).append( "<p>" + JSON.stringify(data) +"</p>" );
 			}).
 				done(function() {
 					//alert( "second success" );
