@@ -101,7 +101,7 @@ public class AddFoundEntryServlet extends HttpServlet {
 //        System.out.println(foundCatInfo.area);
 //        System.out.println(foundCatInfo.contactname);
 //        System.out.println(foundCatInfo.contactemail);
-        //queue.add(withUrl("/foundcatadder").param("name", foundCatName).param("chip", chipped).param("age", foundCatInfo.age).param("sex", foundCatInfo.sex).param("breed", foundCatInfo.breed).param("color", foundCatInfo.color).param("area", foundCatInfo.area).param("contactname", foundCatInfo.contactname).param("contactemail", foundCatInfo.contactemail));
+        queue.add(withUrl("/foundcatadder").param("name", foundCatName).param("chip", chipped).param("age", foundCatInfo.age).param("sex", foundCatInfo.sex).param("breed", foundCatInfo.breed).param("color", foundCatInfo.color).param("area", foundCatInfo.area).param("contactname", foundCatInfo.contactname).param("contactemail", foundCatInfo.contactemail));
 //        System.out.println("after queue");
     	  //DatastoreInfo.datastore.put(foundCat);
     	  

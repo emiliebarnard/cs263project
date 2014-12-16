@@ -5,6 +5,7 @@ import findmyfluffy.findmyfluffy.AddCat;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreInputStream;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.memcache.ErrorHandlers;
 
 public class UploadLost extends HttpServlet{
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
@@ -41,6 +43,7 @@ public class UploadLost extends HttpServlet{
         	
         	//split string by newlines
         	String[] blobStringArray = blobString.split("\n");
+        	String firstCatName = "meow";
         	
         	for(int i = 1; i < blobStringArray.length-1; i++ ){
         		
@@ -50,11 +53,19 @@ public class UploadLost extends HttpServlet{
         		
         		AddCat add = new AddCat();
         		
+        		if (i==1){
+        			firstCatName = blobStringLineArray[6];
+        		}
+        		
         		//TO-DO: add checks around these
         		//Redo the way we get breeds/colors
         		//maybe add a function for this
         		add.addLostCatEntry(blobStringLineArray[6], add.isChipped(blobStringLineArray[3]), blobStringLineArray[5], blobStringLineArray[4], add.findBreed(blobStringLineArray[1]), add.findColor(blobStringLineArray[2]), blobStringLineArray[0], blobStringLineArray[7], blobStringLineArray[8]);
         		//System.out.println("name: " + blobStringLineArray[1] + " age:" + blobStringLineArray[6] + ", sex: " + blobStringLineArray[5]);
+        		
+        		MemCacheInfo.syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO)); 
+            	MemCacheInfo.syncCache.put(blobKey.getKeyString(), firstCatName); // populate cache with name of the first cat
+            	 	
         	}
         	 	
             res.sendRedirect("/submit/data/?blob-key=" + blobKey.getKeyString());
