@@ -91,7 +91,7 @@ window.location.href = "/submit/found/";
     	function parseJSONinfo(jsonStringed){
 /*     		alert("in parse"); */
     		if (jsonStringed == "[]") {
-	    		return "There are no current matches. Please try again later! =^.^=";
+	    		return "there are no current matches. please try again later! =^.^=";
     		}
     		else{
     			//get rid of brackets on string:
@@ -170,9 +170,9 @@ window.location.href = "/submit/found/";
     		$.get("matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + $('input:radio[name=sex]:checked').val() + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function(data) {
 /* 				alert( "data: " + JSON.stringify(data)); */
 				$( "#page" ).empty();
-				$( "#page" ).append("<h2>Potentional Matches:</h2>");
+				$( "#page" ).append("<h2>potentional matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
-				$( "#page" ).append("<h2>General Tips for Finding a Lost Cat:</h2>");
+				$( "#page" ).append("<h2>general tips for finding a lost cat:</h2>");
 				$( "#page" ).append( "<p>most importantly: don't lose hope!<br>alert your local animal shelter<br>post lost cat signs (include a recent photo and contact info)<br>alert your closest neighbors<br>search at night with a flashlight<br>leave point of escape open</p>");
 				$( "#page" ).append( '<br><br><p><a href="/">back home</a></p>' );
 			}).
@@ -191,9 +191,9 @@ window.location.href = "/submit/found/";
     		 $.get("matches/found/?n=" + document.getElementById('foundpetname').value + "&chip=" + $('#fchip').prop('checked').toString() + "&age=" + document.getElementById('fage').value + "&s=" + $('input:radio[name=fsex]:checked').val() + "&b=" + document.getElementById('fbreed').value + "&c=" + document.getElementById('fcolor').value + "&a=" + document.getElementById('farea').value + "&cn=" + document.getElementById('fcontactname').value + "&ce=" +document.getElementById('fcontactemail').value, function(data) {
 /* 				alert( "data: " + JSON.stringify(data)); */
 				$( "#page" ).empty();
-				$( "#page" ).append("<h2>Potentional Matches:</h2>");
+				$( "#page" ).append("<h2>potentional matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
-				$( "#page" ).append("<h2>General Suggestions for Found Cats:</h2>");
+				$( "#page" ).append("<h2>general suggestions for found cats:</h2>");
 				$( "#page" ).append( "<p>check and see if the cat is microchipped<br>check for any tags/collars<br>check with your neighbors</p>" );
 				$( "#page" ).append( '<br><br><p><a href="/">back home</a></p>' );
 			}).
@@ -210,6 +210,30 @@ window.location.href = "/submit/found/";
     	
 		$(document).ready(function () {
 			$( "#submitlostbutton" ).click(function() {
+			
+			
+			//only want it to go if everything is filled in
+			
+			if($('#lostpetname').val() == '') {
+				alert("Please enter the cat's name.");
+			}
+			else if($('#age').val() == '') {
+				alert("Please enter the cat's age.");
+			}
+			
+			else if (!$("#sexf").is(":checked") && !$("#sexm").is(":checked")){
+				alert("Please select a sex.");
+			}
+			else if($('#area').val() == '') {
+				alert("Please enter the area last seen.");
+			}
+			else if($('#contactname').val() == '') {
+				alert("Please your name.");
+			}
+			else if($('#contactemail').val() == '') {
+				alert("Please your phone or e-mail.");
+			}
+			else{ //if everything is filled in, then we can submit all the things
 				/*
 alert( "Handler for .click() called." );
 				alert("about to call submitJSONlostForm");
@@ -221,9 +245,31 @@ alert("finished calling submitJSONlostForm");
 */
 				findMatchLost();
 		/* 		alert("after calling findMatchLost"); */
+		}
 				
 });
 		$( "#submitfoundbutton" ).click(function() {
+		
+		//only want it to go if everything is filled in
+			if($('#foundpetname').val() == '') {
+				alert("Please enter the cat's name.");
+			}
+			else if($('#fage').val() == '') {
+				alert("Please enter the cat's age.");
+			}
+			else if (!$("#fsexf").is(":checked") && !$("#fsexm").is(":checked")){
+				alert("Please select a sex.");
+			}
+			else if($('#farea').val() == '') {
+				alert("Please enter the area last seen.");
+			}
+			else if($('#fcontactname').val() == '') {
+				alert("Please your name.");
+			}
+			else if($('#fcontactemail').val() == '') {
+				alert("Please your phone or e-mail.");
+			}
+			else{ //if everything is filled in, then we can submit all the things
 				/*
 alert( "Handler for .click() called." );
 				alert("about to call submitJSONlostForm");
@@ -235,6 +281,7 @@ alert("finished calling submitJSONlostForm");
 */
 				findMatchFound();
 		/* 		alert("after calling findMatchLost"); */
+		}
 				
 });
     
@@ -286,7 +333,7 @@ alert("finished calling submitJSONlostForm");
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="chip"> microchipped?<br>
 			age: <input type="text" name="age" id="age"><br>
-			sex: <input type="radio" id="sex" name="sex" value="male">male <input type="radio" name="sex" value="female">female<br>
+			sex: <input type="radio" id="sexm" name="sex" value="male">male <input type="radio" name="sex" id="sexf" value="female">female<br>
 			breed: <select name="breed" id="breed">
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>
@@ -330,7 +377,7 @@ alert("finished calling submitJSONlostForm");
 			cat's name: <input type="text" name="petname" id="foundpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="fchip"> microchipped?<br>
 			age: <input type="text" name="age" id="fage"><br>
-			sex: <input type="radio" id="fsex" name="sex" value="male">male <input type="radio" name="sex" value="female">female<br>
+			sex: <input type="radio" id="fsexm" name="sex" value="m">male <input type="radio" name="sex" id="fsexf" value="f">female<br>
 			breed: <select name="breed" id="fbreed">
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>

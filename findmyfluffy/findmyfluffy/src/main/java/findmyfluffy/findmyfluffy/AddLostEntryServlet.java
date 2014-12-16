@@ -107,6 +107,14 @@ public class AddLostEntryServlet extends HttpServlet {
 //     System.out.println(lostCatInfo.contactname);
 //     System.out.println(lostCatInfo.contactemail);
         
+        if (lostCatInfo.sex == "m"){
+        	lostCatInfo.sex = "male";
+        }
+        
+        if (lostCatInfo.sex == "f"){
+        	lostCatInfo.sex = "female";
+        }
+        
         //TODO: uncomment this and the one in add found before deployment
         queue.add(withUrl("/lostcatadder").param("name", lostCatName).param("chip", chipped).param("age", lostCatInfo.age).param("sex", lostCatInfo.sex).param("breed", lostCatInfo.breed).param("color", lostCatInfo.color).param("area", lostCatInfo.area).param("contactname", lostCatInfo.contactname).param("contactemail", lostCatInfo.contactemail));
        //System.out.println("after queue");

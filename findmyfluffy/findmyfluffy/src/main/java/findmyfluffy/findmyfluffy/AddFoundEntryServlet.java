@@ -73,6 +73,15 @@ public class AddFoundEntryServlet extends HttpServlet {
       		}
       	}
       	
+      	if (foundCatInfo.sex == "m"){
+        	foundCatInfo.sex = "male";
+        }
+        
+        if (foundCatInfo.sex == "f"){
+        	foundCatInfo.sex = "female";
+        }
+        
+      	
       	  //foundCat.setProperty("microchip", chipped);
       	  
   //*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT

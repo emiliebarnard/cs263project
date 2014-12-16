@@ -50,6 +50,15 @@ public class MatchLost extends HttpServlet {
 		String contactname = req.getParameter("cn");
 		String contactemail = req.getParameter("ce");
 		
+		if (sex == "m"){
+        	sex = "male";
+        }
+        
+        if (sex == "f"){
+        	sex = "female";
+        }
+        
+		
 		//now we need to search the datastore for matches
 
 		Filter nameFilter = new FilterPredicate("catname", FilterOperator.EQUAL, petname);
