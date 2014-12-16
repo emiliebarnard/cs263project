@@ -25,8 +25,8 @@
     	}
     	
     	function submitJSONlostForm(){
-    		alert("start of submitJSONlostform");
-    		var lostForm = document.getElementById('lostFormInfo');
+/*     		alert("start of submitJSONlostform"); */
+    		var lostForm = document.getElementById('lostForm');
     		var jsonInfo = ConvertFormToJSON(lostForm);
 /*     		alert(JSON.stringify(jsonInfo)); */
     		 $.ajax({
@@ -50,7 +50,7 @@ findMatchLost(jsonInfo);
                 alert("AJAX Failed with status " + textStatus);
             });
 			
-/* 			return false; */
+/*  			return false; */
     	}
     	
     	function submitJSONfoundForm(){
@@ -78,22 +78,24 @@ dataType: "json",
     	}
     	
     	function success(){
-	    	alert("success")
+	    	//alert("success")
     	}
     	
     	function findMatchLost(){
     		alert("start of findMatchLost");
-    		$.get( "/matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + document.getElementById('sex:checked').value + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function() {
-				alert( "success");
+    		$.get("matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + $('input:radio[name=sex]:checked').val() + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function(data) {
+				alert( "data: " + data);
+				$( "#wrapper" ).empty();
+				$( "#wrapper" ).append( "<p>" + data +"</p>" );
 			}).
 				done(function() {
-					alert( "second success" );
+					//alert( "second success" );
 				})
 				.fail(function() {
-					alert( "error" );
+					alert( "Error. Please try again later." );
 					})
 				.always(function() {
-					alert( "finished" );
+					//alert( "finished" );
 			});
     		/* alert(JSON.stringify(jsonInfo)); */
     		/*
@@ -145,13 +147,17 @@ dataType: "json",
     	
 		$(document).ready(function () {
 			$( "#submitlostbutton" ).click(function() {
+/*
 				alert( "Handler for .click() called." );
 				alert("about to call submitJSONlostForm");
+*/
 				submitJSONlostForm();
+/*
 				alert("finished calling submitJSONlostForm");
 				alert("about to call findMatchLost");
+*/
 				findMatchLost();
-				alert("after calling findMatchLost");
+/* 				alert("after calling findMatchLost"); */
 				
 });
     
@@ -197,7 +203,7 @@ dataType: "json",
 		<h2>lost cat?</h2>
 		<!-- <form action="/submit/lost" method="post"> -->
 <!-- 		<form id="lostFormInfo" onsubmit="submitJSONlostForm()"> -->
-			<form id="lostFormInfo">
+<!-- 			<form id="lostFormInfo"> -->
 			<p>
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="chip"> microchipped?<br>
@@ -237,7 +243,7 @@ dataType: "json",
 			your phone or e-mail: <input type="text" name="contactemail" id="contactemail">
 			</p>
 		<button id="submitlostbutton">Submit</button>
-		</form>
+<!-- 		</form> -->
 	</div>
 	
 	<div id="foundForm">

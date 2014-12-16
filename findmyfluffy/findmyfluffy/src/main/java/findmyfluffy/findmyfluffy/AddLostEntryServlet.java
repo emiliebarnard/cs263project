@@ -41,7 +41,7 @@ public class AddLostEntryServlet extends HttpServlet {
 	  //System.out.println("here");
 	  //resp.setContentType("application/json");
 		
-		System.out.println("stuff: " + req);
+		//System.out.println("stuff: " + req);
 
 	  	  Gson gson = new Gson();
 	  	  
@@ -108,7 +108,7 @@ public class AddLostEntryServlet extends HttpServlet {
 //     System.out.println(lostCatInfo.contactemail);
         
         //queue.add(withUrl("/lostcatadder").param("name", lostCatName).param("chip", chipped).param("age", lostCatInfo.age).param("sex", lostCatInfo.sex).param("breed", lostCatInfo.breed).param("color", lostCatInfo.color).param("area", lostCatInfo.area).param("contactname", lostCatInfo.contactname).param("contactemail", lostCatInfo.contactemail));
-       System.out.println("after queue");
+       //System.out.println("after queue");
         //once that task is sent off, then we also call a function to find matches using lostCatInfo:
         
         
