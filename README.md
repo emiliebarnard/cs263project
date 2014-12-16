@@ -1,7 +1,9 @@
 cs263project: Find My Fluffy
 ============
 Project can be found at http://findmyfluffy.appspot.com
+
 Project admin page to upload files can be found at http://findmyfluffy.appspot.com/admin.jsp
+
 JavaDoc can be found at http://findmyfluffy.appspot.com/doc/index.html
 
 Repo for my course project for CS 263: Programming Language Runtime Systems at UC Santa Barbara.
