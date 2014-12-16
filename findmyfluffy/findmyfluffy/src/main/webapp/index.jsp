@@ -125,7 +125,7 @@ dataType: "json",
 					age = properties[5];
 					age = age.split(':"');
 					age = age[1];
-					output += '<b>contact name</b>: ' + age.substring(0, age.length-1) + '<br>';
+					output += '<b>age</b>: ' + age.substring(0, age.length-1) + '<br>';
 					
 					breed = properties[0];
 					breed = breed.split(':"');
@@ -163,11 +163,11 @@ dataType: "json",
     		/* alert("start of findMatchLost"); */
     		$.get("matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + $('input:radio[name=sex]:checked').val() + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function(data) {
 /* 				alert( "data: " + JSON.stringify(data)); */
-				$( "#wrapper" ).empty();
-				$( "#wrapper" ).append("<h2>Potentional Matches:</h2>");
-				$( "#wrapper" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
-				$( "#wrapper" ).append("<h2>General Tips for Finding a Lost Cat:</h2>");
-				$( "#wrapper" ).append( "<p> tips go here </p>" );
+				$( "#page" ).empty();
+				$( "#page" ).append("<h2>Potentional Matches:</h2>");
+				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
+				$( "#page" ).append("<h2>General Tips for Finding a Lost Cat:</h2>");
+				$( "#page" ).append( "<p> tips go here </p>" );
 			}).
 				done(function() {
 			
@@ -278,7 +278,7 @@ alert("finished calling submitJSONlostForm");
 
 <h1>find my fluffy</h1>
 <p>an online database matching lost and found cats</p>
-
+<div id="page">
 <div id="wrapper">
 	<div id="lostForm">
 		<h2>lost cat?</h2>
@@ -373,6 +373,7 @@ alert("finished calling submitJSONlostForm");
 		<input type="submit" value="submit">
 		</form>
 	</div>
+</div>
 </div>
 
 </body>
