@@ -140,10 +140,13 @@ public class AddCat{
        }
     	
     	  lostCat.setProperty("microchip", chipped);
-    	  
-//*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
+
     	  lostCat.setProperty("age", lostCatAge);
-    	  lostCat.setProperty("sex", lostCatSex);
+    	  String sex = "male";
+    	  if (lostCatSex.toLowerCase().contains("f".toLowerCase())){
+    		  sex = "female";
+    	  }
+    	  lostCat.setProperty("sex", sex);
     	  lostCat.setProperty("breed", lostCatBreed);
     	  lostCat.setProperty("color", lostCatColor);
     	  lostCat.setProperty("area", lostCatArea);
@@ -176,9 +179,13 @@ public class AddCat{
 
 		  foundCat.setProperty("microchip", chipped);
 
-//*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
 		  foundCat.setProperty("age", foundCatAge);
-		  foundCat.setProperty("sex", foundCatSex);
+		  
+    	  String sex = "male";
+    	  if (foundCatSex.toLowerCase().contains("f".toLowerCase())){
+    		  sex = "female";
+    	  }
+		  foundCat.setProperty("sex", sex);
 		  foundCat.setProperty("breed", foundCatBreed);
 		  foundCat.setProperty("color", foundCatColor);
 		  foundCat.setProperty("area", foundCatArea);

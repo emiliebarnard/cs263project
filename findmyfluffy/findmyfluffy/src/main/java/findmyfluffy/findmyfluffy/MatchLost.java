@@ -51,10 +51,40 @@ public class MatchLost extends HttpServlet {
 		String contactemail = req.getParameter("ce");
 		
 		//now we need to search the datastore for matches
-		//if three of name, age, sex, breed, color, chip, area match, return result
+
+		Filter nameFilter = new FilterPredicate("catname", FilterOperator.EQUAL, petname);
+		Filter ageFilter = new FilterPredicate("age", FilterOperator.EQUAL, age);
+		Filter sexFilter = new FilterPredicate("sex", FilterOperator.EQUAL, sex);
+		Filter breedFilter = new FilterPredicate("breed", FilterOperator.EQUAL, breed);
+		Filter colorFilter = new FilterPredicate("color", FilterOperator.EQUAL, color);
+		Filter areaFilter = new FilterPredicate("area", FilterOperator.EQUAL, area);
+		
+		
+		Filter nasFilter = CompositeFilterOperator.and(nameFilter, ageFilter, sexFilter);
+		Filter nsbFilter = CompositeFilterOperator.and(nameFilter, sexFilter, breedFilter);
+		Filter nbcFilter = CompositeFilterOperator.and(nameFilter, breedFilter, colorFilter);
+		Filter ncaFilter = CompositeFilterOperator.and(nameFilter, colorFilter, areaFilter);
+		Filter nabFilter = CompositeFilterOperator.and(nameFilter, ageFilter, breedFilter);
+		Filter nacFilter = CompositeFilterOperator.and(nameFilter, ageFilter, colorFilter);
+		Filter naaFilter = CompositeFilterOperator.and(nameFilter, ageFilter, areaFilter);
+		Filter nscFilter = CompositeFilterOperator.and(nameFilter, sexFilter, colorFilter);
+		Filter nsaFilter = CompositeFilterOperator.and(nameFilter, sexFilter, areaFilter);
+		Filter nbaFilter = CompositeFilterOperator.and(nameFilter, breedFilter, areaFilter);
+		Filter asbFilter = CompositeFilterOperator.and(ageFilter, sexFilter, breedFilter);
+		Filter abcFilter = CompositeFilterOperator.and(ageFilter, breedFilter, colorFilter);
+		Filter acaFilter = CompositeFilterOperator.and(ageFilter, colorFilter, areaFilter);
+		Filter abaFilter = CompositeFilterOperator.and(ageFilter, breedFilter, areaFilter);
+		Filter asaFilter = CompositeFilterOperator.and(ageFilter, sexFilter, areaFilter);
+		Filter ascFilter = CompositeFilterOperator.and(ageFilter, sexFilter, colorFilter);
+		Filter sbcFilter = CompositeFilterOperator.and(sexFilter, breedFilter, colorFilter);
+		Filter sbaFilter = CompositeFilterOperator.and(sexFilter, breedFilter, areaFilter);
+		Filter bcaFilter = CompositeFilterOperator.and(breedFilter, colorFilter, areaFilter);
+		
+		Filter anyThree = CompositeFilterOperator.or(nasFilter, nsbFilter, nbcFilter, ncaFilter, nabFilter, nacFilter, naaFilter, nscFilter, nsaFilter, nbaFilter, asbFilter, abcFilter, acaFilter, abaFilter, asaFilter, ascFilter, sbcFilter, sbaFilter, bcaFilter);
+		
 		//Future work: should this be changed to something else?
-		Filter matches = new FilterPredicate("catname", FilterOperator.EQUAL, petname);
-		Query q = new Query("foundcat").setFilter(matches);
+		
+		Query q = new Query("foundcat").setFilter(anyThree);
 		
 		PreparedQuery pq = DatastoreInfo.datastore.prepare(q);
 		List<Entity> results = pq.asList(FetchOptions.Builder.withLimit(10));

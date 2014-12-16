@@ -44,7 +44,7 @@ public class UploadLost extends HttpServlet{
         	
         	for(int i = 1; i < blobStringArray.length-1; i++ ){
         		
-        		System.out.println(blobStringArray[i]);
+        		//System.out.println(blobStringArray[i]);
         		//split each line by ","
         		String[] blobStringLineArray = blobStringArray[i].split(",");
         		

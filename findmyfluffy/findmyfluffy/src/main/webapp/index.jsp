@@ -13,6 +13,11 @@
     
 <!--     json stuff -->
     <script type="text/javascript">
+    
+    	function makeSerializable(elem) {
+  return $(elem).prop('elements', $('*', elem).andSelf().get());
+}
+
     	function ConvertFormToJSON(form){
     		var array = jQuery(form).serializeArray();
     		var json = {};
@@ -27,7 +32,7 @@
     	function submitJSONlostForm(){
 /*     		alert("start of submitJSONlostform"); */
     		var lostForm = document.getElementById('lostForm');
-    		var jsonInfo = ConvertFormToJSON(lostForm);
+    		var jsonInfo = ConvertFormToJSON(makeSerializable(lostForm));
 /*     		alert(JSON.stringify(jsonInfo)); */
     		 $.ajax({
            		type: "POST",
@@ -165,7 +170,7 @@ dataType: "json",
 				$( "#wrapper" ).append( "<p> tips go here </p>" );
 			}).
 				done(function() {
-					//alert( "second success" );
+			
 				})
 				.fail(function() {
 					alert( "Error. Please try again later." );
@@ -202,7 +207,7 @@ dataType: "json",
 		function findMatchFound(jsonInfo){
     		 $.ajax({
            		type: "GET",
-   				url: "/matches/found/?n=" + document.getElementById('foundpetname').value + "&chip=" + $('#fchip').prop('checked').toString() + "&age=" + document.getElementById('fage').value + "&s=" + document.getElementById('fsex:checked').value + "&b=" + document.getElementById('fbreed').value + "&c=" + document.getElementById('fcolor').value + "&a=" + document.getElementById('farea').value + "&cn=" + document.getElementById('fcontactname').value + "&ce=" +document.getElementById('fcontactemail').value,
+   				url: "/matches/found/?n=" + document.getElementById('petname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + document.getElementById('sex:checked').value + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value,
    				data: JSON.stringify(jsonInfo),
 				cache: false,
 				success: success,
@@ -223,17 +228,17 @@ dataType: "json",
     	
 		$(document).ready(function () {
 			$( "#submitlostbutton" ).click(function() {
-/*
-				alert( "Handler for .click() called." );
+				/*
+alert( "Handler for .click() called." );
 				alert("about to call submitJSONlostForm");
 */
 				submitJSONlostForm();
-/*
-				alert("finished calling submitJSONlostForm");
+				/*
+alert("finished calling submitJSONlostForm");
 				alert("about to call findMatchLost");
 */
 				findMatchLost();
-/* 				alert("after calling findMatchLost"); */
+		/* 		alert("after calling findMatchLost"); */
 				
 });
     
@@ -277,6 +282,7 @@ dataType: "json",
 <div id="wrapper">
 	<div id="lostForm">
 		<h2>lost cat?</h2>
+		<!-- <form id="lostFormInfo"> -->
 		<!-- <form action="/submit/lost" method="post"> -->
 <!-- 		<form id="lostFormInfo" onsubmit="submitJSONlostForm()"> -->
 <!-- 			<form id="lostFormInfo"> -->

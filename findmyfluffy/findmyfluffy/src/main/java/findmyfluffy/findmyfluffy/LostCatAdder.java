@@ -30,6 +30,8 @@ public class LostCatAdder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
+    	System.out.println("in lost cat adder queue");
+    	
     	String lostCatName = request.getParameter("name");
     	String lostCatChip = request.getParameter("chip");
     	String lostCatAge = request.getParameter("age");
@@ -57,7 +59,6 @@ public class LostCatAdder extends HttpServlet {
   	
   	  lostCat.setProperty("microchip", chipped);
   	  
-//*****TO DO: ADD A CEHCK TO MAKE SURE ITS AN INT
   	  lostCat.setProperty("age", lostCatAge);
   	  lostCat.setProperty("sex", lostCatSex);
   	  lostCat.setProperty("breed", lostCatBreed);
