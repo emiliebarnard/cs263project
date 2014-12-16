@@ -173,7 +173,7 @@ window.location.href = "/submit/found/";
 				$( "#page" ).append("<h2>Potentional Matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
 				$( "#page" ).append("<h2>General Tips for Finding a Lost Cat:</h2>");
-				$( "#page" ).append( "<p> tips go here </p>");
+				$( "#page" ).append( "<p>most importantly: don't lose hope!<br>alert your local animal shelter<br>post lost cat signs (include a recent photo and contact info)<br>alert your closest neighbors<br>search at night with a flashlight<br>leave point of escape open</p>");
 				$( "#page" ).append( '<br><br><p><a href="/">back home</a></p>' );
 			}).
 				done(function() {
@@ -194,7 +194,7 @@ window.location.href = "/submit/found/";
 				$( "#page" ).append("<h2>Potentional Matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
 				$( "#page" ).append("<h2>General Suggestions for Found Cats:</h2>");
-				$( "#page" ).append( "<p> tips go here </p>" );
+				$( "#page" ).append( "<p>check and see if the cat is microchipped<br>check for any tags/collars<br>check with your neighbors</p>" );
 				$( "#page" ).append( '<br><br><p><a href="/">back home</a></p>' );
 			}).
 				done(function() {
