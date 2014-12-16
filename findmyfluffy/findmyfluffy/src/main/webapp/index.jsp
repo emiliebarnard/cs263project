@@ -81,13 +81,88 @@ dataType: "json",
 	    	//alert("success")
     	}
     	
+    	function parseJSONinfo(jsonStringed){
+/*     		alert("in parse"); */
+    		if (jsonStringed == "[]") {
+	    		return "There are no current matches. Please try again later! =^.^=";
+    		}
+    		else{
+    			//get rid of brackets on string:
+    			jsonStringed = jsonStringed.substring(1, jsonStringed.length-1);
+/*     			alert(jsonStringed); */
+    			output = "";
+    			//first split up the matches:
+    			matchesArray = jsonStringed.split('{"key":{"parentKey":');
+    			//this gives an empty first element so we'll start at the next one
+    			for (var i = 1; i < matchesArray.length; i++) {
+					output += '<div id="matchesBox"><p>';
+					//for each match, we want to get the name:
+					match = matchesArray[i].split('propertyMap":');
+					match = match[1];
+					properties = match.split(",");
+					
+					name = properties[7];
+					/* output += '<b>cat name</b>: ' + name.substring(0, name.length-1) + '<br>'; */
+					output += '<b>cat name</b>: ' + name.substring(11, name.length-1) + '<br>';
+					
+/*
+					chip = properties[8];
+					chip = chip.split(':"');
+					chip = chip[1];
+					output += '<b>microchipped?</b>: ' + chip.substring(0, chip.length-1) + '<br>';
+*/
+					
+					sex = properties[1];
+					sex = sex.split(':"');
+					sex = sex[1];
+					output += '<b>sex</b>: ' + sex.substring(0, sex.length-1) + '<br>';
+					
+					age = properties[5];
+					age = age.split(':"');
+					age = age[1];
+					output += '<b>contact name</b>: ' + age.substring(0, age.length-1) + '<br>';
+					
+					breed = properties[0];
+					breed = breed.split(':"');
+					breed = breed[1];
+					output += '<b>breed</b>: ' + breed.substring(0, breed.length-1) + '<br>';
+
+					color = properties[3];
+					color = color.split(':"');
+					color = color[1];
+					output += '<b>primary color</b>: ' + color.substring(0, color.length-1) + '<br>';
+					
+					area = properties[2];
+					area = area.split(':"');
+					area = area[1];
+					output += '<b>area found</b>: ' + area.substring(0, area.length-3) + '<br>';
+					
+					cn = properties[4];
+					cn = cn.split(':"');
+					cn = cn[1];
+					output += '<b>contact name</b>: ' + cn.substring(0, cn.length-1) + '<br>';
+					
+					ce = properties[6];
+					ce = ce.split(':"');
+					ce = ce[1];
+					output += '<b>contact phone/email</b>: ' + ce.substring(0, ce.length-1) + '<br>';
+								
+					output += "<p></div>";
+
+				}
+				return output;
+    		}
+    	}
+    	
     	function findMatchLost(){
-    		alert("start of findMatchLost");
+    		/* alert("start of findMatchLost"); */
     		$.get("matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + $('input:radio[name=sex]:checked').val() + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function(data) {
-				alert( "data: " + JSON.stringify(data));
+/* 				alert( "data: " + JSON.stringify(data)); */
 				$( "#wrapper" ).empty();
 				$( "#wrapper" ).append("<h2>Potentional Matches:</h2>");
-				$( "#wrapper" ).append( "<p>" + JSON.stringify(data) +"</p>" );
+				$( "#wrapper" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
+				$( "#wrapper" ).append("<h2>General Tips for Finding a Lost Cat:</h2>");
+				$( "#wrapper" ).append( "<p> tips go here </p>" );
 			}).
 				done(function() {
 					//alert( "second success" );
