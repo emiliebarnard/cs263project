@@ -25,30 +25,32 @@
     	}
     	
     	function submitJSONlostForm(){
-    		alert("in submit lost form");
+    		alert("start of submitJSONlostform");
     		var lostForm = document.getElementById('lostFormInfo');
     		var jsonInfo = ConvertFormToJSON(lostForm);
 /*     		alert(JSON.stringify(jsonInfo)); */
     		 $.ajax({
            		type: "POST",
    				url: "/submit/lost",
-   				data: JSON.stringify(jsonInfo)
+   				data: JSON.stringify(jsonInfo),
+				cache: false
    				/*
 dataType: "json",
 				contentType: 'application/json',
         		mimeType: 'application/json'
 */
 			}).done(function() {
-				alert("before findMatchLost");
-				findMatchLost(jsonInfo);
+				/*
+findMatchLost(jsonInfo);
 				alert("after findMatchLost");
                 window.location.href = "/submit/lost/?catname=" + document.getElementById('lostpetname').value ;
+*/
                 
             }).fail(function(jqXHR, textStatus) {
                 alert("AJAX Failed with status " + textStatus);
             });
 			
-			return false;
+/* 			return false; */
     	}
     	
     	function submitJSONfoundForm(){
@@ -58,7 +60,8 @@ dataType: "json",
     		 $.ajax({
            		type: "POST",
    				url: "/submit/found",
-   				data: JSON.stringify(jsonInfo)
+   				data: JSON.stringify(jsonInfo),
+				cache: false
    				/*
 dataType: "json",
 				contentType: 'application/json',
@@ -71,7 +74,7 @@ dataType: "json",
                 alert("AJAX Failed with status " + textStatus);
             });
 			
-			return false;
+			//return false;
     	}
     	
     	function success(){
@@ -107,7 +110,8 @@ dataType: "json",
 				contentType: 'application/json',
         		mimeType: 'application/json'
 */
-			}).done(function() {
+			/*
+}).done(function() {
                 alert("done of findMatchLost");
             }).fail(function(jqXHR, textStatus) {
                 alert("AJAX Failed with status " + textStatus);
@@ -140,6 +144,16 @@ dataType: "json",
     	}
     	
 		$(document).ready(function () {
+			$( "#submitlostbutton" ).click(function() {
+				alert( "Handler for .click() called." );
+				alert("about to call submitJSONlostForm");
+				submitJSONlostForm();
+				alert("finished calling submitJSONlostForm");
+				alert("about to call findMatchLost");
+				findMatchLost();
+				alert("after calling findMatchLost");
+				
+});
     
 		});
 	</script>
@@ -182,7 +196,8 @@ dataType: "json",
 	<div id="lostForm">
 		<h2>lost cat?</h2>
 		<!-- <form action="/submit/lost" method="post"> -->
-		<form id="lostFormInfo" onsubmit="return submitJSONlostForm()">
+<!-- 		<form id="lostFormInfo" onsubmit="submitJSONlostForm()"> -->
+			<form id="lostFormInfo">
 			<p>
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="chip"> microchipped?<br>
@@ -221,7 +236,7 @@ dataType: "json",
 			your name: <input type="text" name="contactname" id="contactname"><br>
 			your phone or e-mail: <input type="text" name="contactemail" id="contactemail">
 			</p>
-		<input type="submit" value="submit">
+		<button id="submitlostbutton">Submit</button>
 		</form>
 	</div>
 	
