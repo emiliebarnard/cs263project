@@ -40,6 +40,7 @@
             <input type="submit" value="Submit">
         </form>
     	</div>
-    </div>	
+    </div>
+    <br><br><p><a href="/">back home</a></p>	
     </body>
 </html>

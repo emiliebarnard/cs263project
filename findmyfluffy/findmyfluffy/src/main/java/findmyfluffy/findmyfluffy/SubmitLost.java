@@ -19,7 +19,8 @@ public class SubmitLost {
 	@Path("/lost")
 	
 	public String printLostInfo(@DefaultValue("your cat") @QueryParam("catname") String catname) {
-		return "thanks for the info! we hope you find " + catname + " soon. =^.^=";
+		return "thanks for the info! we hope you find " + catname + " soon. =^.^="
+				+ "<br><a href=\"/\">back to admin page</a>";
 	}
 
 }

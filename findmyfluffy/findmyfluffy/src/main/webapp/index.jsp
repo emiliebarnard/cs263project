@@ -60,8 +60,8 @@ findMatchLost(jsonInfo);
     	
     	function submitJSONfoundForm(){
     		
-    		var lostForm = document.getElementById('foundFormInfo');
-    		var jsonInfo = ConvertFormToJSON(lostForm);
+    		var foundForm = document.getElementById('foundForm');
+    		var jsonInfo = ConvertFormToJSON(makeSerializable(foundForm));
     		 $.ajax({
            		type: "POST",
    				url: "/submit/found",
@@ -73,8 +73,10 @@ dataType: "json",
         		mimeType: 'application/json'
 */
 			}).done(function() {
-                window.location.href = "/submit/found/";
+                /*
+window.location.href = "/submit/found/";
                 findMatchFound(jsonInfo);
+*/
             }).fail(function(jqXHR, textStatus) {
                 alert("AJAX Failed with status " + textStatus);
             });
@@ -140,7 +142,9 @@ dataType: "json",
 					area = properties[2];
 					area = area.split(':"');
 					area = area[1];
-					output += '<b>area found</b>: ' + area.substring(0, area.length-3) + '<br>';
+					area = area + "";
+					area = area.replace(/(?:\\[rn])+/g, "");
+					output += '<b>area found</b>: ' + area.substring(0, area.length-1) + '<br>';
 					
 					cn = properties[4];
 					cn = cn.split(':"');
@@ -150,6 +154,8 @@ dataType: "json",
 					ce = properties[6];
 					ce = ce.split(':"');
 					ce = ce[1];
+					ce = ce + "";
+					ce = ce.replace(/(?:\\[rn])+/g, "");
 					output += '<b>contact phone/email</b>: ' + ce.substring(0, ce.length-1) + '<br>';
 								
 					output += "<p></div>";
@@ -167,7 +173,8 @@ dataType: "json",
 				$( "#page" ).append("<h2>Potentional Matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
 				$( "#page" ).append("<h2>General Tips for Finding a Lost Cat:</h2>");
-				$( "#page" ).append( "<p> tips go here </p>" );
+				$( "#page" ).append( "<p> tips go here </p>");
+				$( "#page" ).append( '<br><br><p><a href="/">back home</a></p>' );
 			}).
 				done(function() {
 			
@@ -178,52 +185,27 @@ dataType: "json",
 				.always(function() {
 					//alert( "finished" );
 			});
-    		/* alert(JSON.stringify(jsonInfo)); */
-    		/*
-alert("in findMatchLost");
-    		 $.ajax({
-           		type: "GET",
-   				url: "/matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + document.getElementById('sex:checked').value + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value,
-   				data: JSON.stringify(jsonInfo),
-				cache: false,
-				success: success,
-				dataType: "json"
-   				/*
-dataType: "json",
-				contentType: 'application/json',
-        		mimeType: 'application/json'
-*/
-			/*
-}).done(function() {
-                alert("done of findMatchLost");
-            }).fail(function(jqXHR, textStatus) {
-                alert("AJAX Failed with status " + textStatus);
-            });
-			
-			return false;
-*/
     	}
     	
 		function findMatchFound(jsonInfo){
-    		 $.ajax({
-           		type: "GET",
-   				url: "/matches/found/?n=" + document.getElementById('petname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + document.getElementById('sex:checked').value + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value,
-   				data: JSON.stringify(jsonInfo),
-				cache: false,
-				success: success,
-				dataType: "json"
-   				/*
-dataType: "json",
-				contentType: 'application/json',
-        		mimeType: 'application/json'
-*/
-			}).done(function() {
-                //put stuff here
-            }).fail(function(jqXHR, textStatus) {
-                alert("AJAX Failed with status " + textStatus);
-            });
+    		 $.get("matches/found/?n=" + document.getElementById('foundpetname').value + "&chip=" + $('#fchip').prop('checked').toString() + "&age=" + document.getElementById('fage').value + "&s=" + $('input:radio[name=fsex]:checked').val() + "&b=" + document.getElementById('fbreed').value + "&c=" + document.getElementById('fcolor').value + "&a=" + document.getElementById('farea').value + "&cn=" + document.getElementById('fcontactname').value + "&ce=" +document.getElementById('fcontactemail').value, function(data) {
+/* 				alert( "data: " + JSON.stringify(data)); */
+				$( "#page" ).empty();
+				$( "#page" ).append("<h2>Potentional Matches:</h2>");
+				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
+				$( "#page" ).append("<h2>General Suggestions for Found Cats:</h2>");
+				$( "#page" ).append( "<p> tips go here </p>" );
+				$( "#page" ).append( '<br><br><p><a href="/">back home</a></p>' );
+			}).
+				done(function() {
 			
-			return false;
+				})
+				.fail(function() {
+					alert( "Error. Please try again later." );
+					})
+				.always(function() {
+					//alert( "finished" );
+			});
     	}
     	
 		$(document).ready(function () {
@@ -238,6 +220,20 @@ alert("finished calling submitJSONlostForm");
 				alert("about to call findMatchLost");
 */
 				findMatchLost();
+		/* 		alert("after calling findMatchLost"); */
+				
+});
+		$( "#submitfoundbutton" ).click(function() {
+				/*
+alert( "Handler for .click() called." );
+				alert("about to call submitJSONlostForm");
+*/
+				submitJSONfoundForm();
+				/*
+alert("finished calling submitJSONlostForm");
+				alert("about to call findMatchLost");
+*/
+				findMatchFound();
 		/* 		alert("after calling findMatchLost"); */
 				
 });
@@ -330,7 +326,6 @@ alert("finished calling submitJSONlostForm");
 	
 	<div id="foundForm">
 		<h2>found cat?</h2>
-		<form id="foundFormInfo" onsubmit="return submitJSONfoundForm()">
 			<p>
 			cat's name: <input type="text" name="petname" id="foundpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="fchip"> microchipped?<br>
@@ -368,10 +363,8 @@ alert("finished calling submitJSONlostForm");
 			<br>area last seen: <input type="text" name="area" id="farea"><br>
 			your name: <input type="text" name="contactname" id="fcontactname"><br>
 			your phone or e-mail: <input type="text" name="contactemail" id="fcontactemail">
-
 			</p>
-		<input type="submit" value="submit">
-		</form>
+			<button id="submitfoundbutton">Submit</button>
 	</div>
 </div>
 </div>

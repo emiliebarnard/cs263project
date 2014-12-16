@@ -19,7 +19,8 @@ public class Serve {
 	@Path("/data")
 	
 	public String printLostInfo(@DefaultValue("default-key") @QueryParam("blob-key") String key) {
-		return "thanks for the info! we've saved your file as " + key ;
+		return "thanks for the info! we've saved your file as " + key 
+				+ "<br><a href=\"/admin.jsp\">back to admin page</a>";
 	}
 
 }

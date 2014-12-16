@@ -37,6 +37,7 @@ p, lostForm p, foundForm p, matchesBox p {
 	padding: 10px;
 	border-radius: 25px;
 	border-color: #4082a3;
+	margin-bottom: 100px;
 }
 
 #lostUpload {
@@ -57,6 +58,7 @@ p, lostForm p, foundForm p, matchesBox p {
 	padding: 10px;
 	border-radius: 25px;
 	border-color: #4082a3;
+	margin-bottom: 100px;
 	
 }
 
