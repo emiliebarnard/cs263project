@@ -38,11 +38,11 @@ public class MatchFound extends HttpServlet {
 		String contactname = req.getParameter("cn");
 		String contactemail = req.getParameter("ce");
 		
-		if (sex == "m"){
+      	if (sex.equals("m")){
         	sex = "male";
         }
         
-        if (sex == "f"){
+        if (sex.equals("f")){
         	sex = "female";
         }
 		

@@ -209,6 +209,27 @@ window.location.href = "/submit/found/";
     	}
     	
 		$(document).ready(function () {
+		//tool tip stuff
+			$('.masterTooltip').hover(function(){
+        // Hover over code
+	        var title = $(this).attr('title');
+	        $(this).data('tipText', title).removeAttr('title');
+	        $('<p class="tooltip"></p>')
+	        .text(title)
+	        .appendTo('body')
+	        .fadeIn('slow');
+	}, function() {
+	        // Hover out code
+	        $(this).attr('title', $(this).data('tipText'));
+	        $('.tooltip').remove();
+	}).mousemove(function(e) {
+	        var mousex = e.pageX + 20; //Get X coordinates
+	        var mousey = e.pageY + 10; //Get Y coordinates
+	        $('.tooltip')
+	        .css({ top: mousey, left: mousex })
+	});		
+			
+		
 			$( "#submitlostbutton" ).click(function() {
 			
 			
@@ -331,7 +352,7 @@ alert("finished calling submitJSONlostForm");
 <!-- 			<form id="lostFormInfo"> -->
 			<p>
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
-			<input type="checkbox" name="chip" value="chip" id="chip"> microchipped?<br>
+			<input type="checkbox" name="chip" value="chip" id="chip"><m title="Most shelters and vet offices scan for a microchip when new animals are brought in. Microchip your cat to increase the chances of finding him/her if she ever gets lost!" class="masterTooltip">microchipped?</m><br>
 			age: <input type="text" name="age" id="age"><br>
 			sex: <input type="radio" id="sexm" name="sex" value="male">male <input type="radio" name="sex" id="sexf" value="female">female<br>
 			breed: <select name="breed" id="breed">
@@ -375,8 +396,7 @@ alert("finished calling submitJSONlostForm");
 		<h2>found cat?</h2>
 			<p>
 			cat's name: <input type="text" name="petname" id="foundpetname"><br>
-			<input type="checkbox" name="chip" value="chip" id="fchip"> microchipped?<br>
-			age: <input type="text" name="age" id="fage"><br>
+			<input type="checkbox" name="chip" value="chip" id="fchip"><m title="Most shelters and vet offices scan for a microchip when new animals are brought in. Microchip your cat to increase the chances of finding him/her if she ever gets lost!" class="masterTooltip">microchipped?</m><br>			age: <input type="text" name="age" id="fage"><br>
 			sex: <input type="radio" id="fsexm" name="sex" value="m">male <input type="radio" name="sex" id="fsexf" value="f">female<br>
 			breed: <select name="breed" id="fbreed">
 				<option value="dsh">domestic short hair</option>

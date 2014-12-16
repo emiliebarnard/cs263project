@@ -73,11 +73,11 @@ public class AddFoundEntryServlet extends HttpServlet {
       		}
       	}
       	
-      	if (foundCatInfo.sex == "m"){
+      	if (foundCatInfo.sex.equals("m")){
         	foundCatInfo.sex = "male";
         }
         
-        if (foundCatInfo.sex == "f"){
+        if (foundCatInfo.sex.equals("f")){
         	foundCatInfo.sex = "female";
         }
         

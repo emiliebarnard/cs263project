@@ -26,6 +26,10 @@ p, lostForm p, foundForm p, matchesBox p {
     font-family: Verdana, Helvetica, sans-serif;
 }
 
+m {
+	font-style: normal !important;
+}
+
 #wrapper {
 	padding-top: 50px;
 	width: 635px;
@@ -96,4 +100,16 @@ p, lostForm p, foundForm p, matchesBox p {
 
 ul{
 	color: #888888;
+}
+
+.tooltip {
+	display:none;
+	position:absolute;
+	width: 300px;
+	border:1px solid #4082a3;
+	background-color:#888888;
+	border-radius:5px;
+	padding:10px;
+	color:#fff;
+	font-size:12px Verdana;
 }
