@@ -286,7 +286,7 @@ alert("finished calling submitJSONlostForm");
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="chip"> microchipped?<br>
 			age: <input type="text" name="age" id="age"><br>
-			sex: <input type="radio" id="sex" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
+			sex: <input type="radio" id="sex" name="sex" value="male">male <input type="radio" name="sex" value="female">female<br>
 			breed: <select name="breed" id="breed">
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>
@@ -330,7 +330,7 @@ alert("finished calling submitJSONlostForm");
 			cat's name: <input type="text" name="petname" id="foundpetname"><br>
 			<input type="checkbox" name="chip" value="chip" id="fchip"> microchipped?<br>
 			age: <input type="text" name="age" id="fage"><br>
-			sex: <input type="radio" id="fsex" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female<br>
+			sex: <input type="radio" id="fsex" name="sex" value="male">male <input type="radio" name="sex" value="female">female<br>
 			breed: <select name="breed" id="fbreed">
 				<option value="dsh">domestic short hair</option>
 				<option value="dmh">domestic medium hair</option>

@@ -2,6 +2,9 @@ body {
     font-family: Verdana, Helvetica, sans-serif;
     background-color: #cbffe2;
     text-align: center;
+    background-image: url("../images/icon.png");
+	background-position: right bottom; /*Positioning*/
+	background-repeat: no-repeat; /*Prevent showing multiple background images*/
 }
 
 h1 {
