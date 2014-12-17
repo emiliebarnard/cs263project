@@ -6,6 +6,22 @@ Project admin page to upload files can be found at http://findmyfluffy.appspot.c
 
 JavaDoc can be found at http://findmyfluffy.appspot.com/doc/index.html
 
+Video demo can be found at 
+
+Selenium usage screenshots (selenium demo is in video):
+
+http://em.ilie.im/image/0M0L1R281O3b
+
+http://em.ilie.im/image/363x0t2R002Z
+
+http://em.ilie.im/image/362O1S3h2h1C
+
+http://em.ilie.im/image/2S3F2W0s3C3V
+
+http://em.ilie.im/image/131R1q1z0H32
+
+============
+
 Repo for my course project for CS 263: Programming Language Runtime Systems at UC Santa Barbara.
 Find My Fluffy is a webservice intended to allow users to easily report lost and found cats, and will generate potential lost/found matched based on database entries.
 
