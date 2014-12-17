@@ -255,17 +255,8 @@ window.location.href = "/submit/found/";
 				alert("Please your phone or e-mail.");
 			}
 			else{ //if everything is filled in, then we can submit all the things
-				/*
-alert( "Handler for .click() called." );
-				alert("about to call submitJSONlostForm");
-*/
 				submitJSONlostForm();
-				/*
-alert("finished calling submitJSONlostForm");
-				alert("about to call findMatchLost");
-*/
 				findMatchLost();
-		/* 		alert("after calling findMatchLost"); */
 		}
 				
 });
@@ -291,17 +282,8 @@ alert("finished calling submitJSONlostForm");
 				alert("Please your phone or e-mail.");
 			}
 			else{ //if everything is filled in, then we can submit all the things
-				/*
-alert( "Handler for .click() called." );
-				alert("about to call submitJSONlostForm");
-*/
 				submitJSONfoundForm();
-				/*
-alert("finished calling submitJSONlostForm");
-				alert("about to call findMatchLost");
-*/
 				findMatchFound();
-		/* 		alert("after calling findMatchLost"); */
 		}
 				
 });
@@ -313,46 +295,15 @@ alert("finished calling submitJSONlostForm");
 
 <body>
 
-<!-- This was the guestbook demo: -->
-<!--
-<%
-    String guestbookName = request.getParameter("guestbookName");
-    if (guestbookName == null) {
-        guestbookName = "default";
-    }
-    pageContext.setAttribute("guestbookName", guestbookName);
-    UserService userService = UserServiceFactory.getUserService();
-    User user = userService.getCurrentUser();
-    if (user != null) {
-        pageContext.setAttribute("user", user);
-%>
-
-<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-    <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-<%
-} else {
-%>
-<p>Hello!
-    <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-    to include your name with greetings you post.</p>
-<%
-    }
-%>
--->
-
 <h1>find my fluffy</h1>
 <p>an online database matching lost and found cats</p>
 <div id="page">
 <div id="wrapper">
 	<div id="lostForm">
 		<h2>lost cat?</h2>
-		<!-- <form id="lostFormInfo"> -->
-		<!-- <form action="/submit/lost" method="post"> -->
-<!-- 		<form id="lostFormInfo" onsubmit="submitJSONlostForm()"> -->
-<!-- 			<form id="lostFormInfo"> -->
 			<p>
 			cat's name: <input type="text" name="petname" id="lostpetname"><br>
-			<input type="checkbox" name="chip" value="chip" id="chip"><m title="Most shelters and vet offices scan for a microchip when new animals are brought in. Microchip your cat to increase the chances of finding him/her if she ever gets lost!" class="masterTooltip">microchipped?</m><br>
+			<input type="checkbox" name="chip" value="chip" id="chip"><m title="Most shelters and vet offices scan for a microchip when new animals are brought in. Microchip your cat to increase the chances of finding him/her if s/he ever gets lost!" class="masterTooltip">microchipped?</m><br>
 			age: <input type="text" name="age" id="age"><br>
 			sex: <input type="radio" id="sexm" name="sex" value="male">male <input type="radio" name="sex" id="sexf" value="female">female<br>
 			breed: <select name="breed" id="breed">
@@ -396,7 +347,7 @@ alert("finished calling submitJSONlostForm");
 		<h2>found cat?</h2>
 			<p>
 			cat's name: <input type="text" name="petname" id="foundpetname"><br>
-			<input type="checkbox" name="chip" value="chip" id="fchip"><m title="Most shelters and vet offices scan for a microchip when new animals are brought in. Microchip your cat to increase the chances of finding him/her if she ever gets lost!" class="masterTooltip">microchipped?</m><br>			age: <input type="text" name="age" id="fage"><br>
+			<input type="checkbox" name="chip" value="chip" id="fchip"><m title="Most shelters and vet offices scan for a microchip when new animals are brought in. Microchip your cat to increase the chances of finding him/her if s/he ever gets lost!" class="masterTooltip">microchipped?</m><br>			age: <input type="text" name="age" id="fage"><br>
 			sex: <input type="radio" id="fsexm" name="sex" value="m">male <input type="radio" name="sex" id="fsexf" value="f">female<br>
 			breed: <select name="breed" id="fbreed">
 				<option value="dsh">domestic short hair</option>
