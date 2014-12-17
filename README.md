@@ -20,6 +20,8 @@ http://em.ilie.im/image/2S3F2W0s3C3V
 
 http://em.ilie.im/image/131R1q1z0H32
 
+Proof that project uses maven to build: http://em.ilie.im/image/0x2q3A2n3215
+
 ============
 
 Repo for my course project for CS 263: Programming Language Runtime Systems at UC Santa Barbara.
