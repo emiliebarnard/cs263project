@@ -6,7 +6,7 @@ Project admin page to upload files can be found at http://findmyfluffy.com/admin
 
 JavaDoc can be found at http://findmyfluffy.com/doc/index.html
 
-Video demo can be found at 
+Video demo can be found at http://youtu.be/EuI4U9i2KaM
 
 Selenium usage screenshots (selenium demo is in video):
 
