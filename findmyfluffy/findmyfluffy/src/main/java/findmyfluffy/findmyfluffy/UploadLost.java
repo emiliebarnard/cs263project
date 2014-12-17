@@ -16,9 +16,21 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.memcache.ErrorHandlers;
 
+/**
+ * UploadFound Class
+ * 
+ * The class where the csv files are uploaded into the blobstore, then parsed so each found cat is added into the datastore. Also uses Memcache.
+ * 
+ * @author emilie (Emilie Menard Barnard) - <a href="mailto:emilie@cs.ucsb.edu">emilie@cs.ucsb.edu</a>
+ * @version 1.0
+ *
+ */
 public class UploadLost extends HttpServlet{
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {

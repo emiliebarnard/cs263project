@@ -19,12 +19,19 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.gson.Gson;
 
+/**
+ * MatchFound Class
+ * 
+ * This class uses REST GET to find potential lost/found cat matches. It runs a query on the datastore, and returns the results as a JSON object.
+ * 
+ * @author emilie (Emilie Menard Barnard) - <a href="mailto:emilie@cs.ucsb.edu">emilie@cs.ucsb.edu</a>
+ * @version 1.0
+ */
 public class MatchFound extends HttpServlet {
 	
-	public void findMatches(Cat lostCatInfo){
-		
-	}
-	
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
@@ -90,7 +97,10 @@ public class MatchFound extends HttpServlet {
         resp.getWriter().print(json);
 	}	
 	
-  @Override
+  /* (non-Javadoc)
+ * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+ */
+@Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp){
 	  //nothing to post
   }
