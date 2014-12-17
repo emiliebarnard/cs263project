@@ -1,10 +1,10 @@
 cs263project: Find My Fluffy
 ============
-Project can be found at http://findmyfluffy.appspot.com
+Project can be found at http://findmyfluffy.com
 
-Project admin page to upload files can be found at http://findmyfluffy.appspot.com/admin.jsp
+Project admin page to upload files can be found at http://findmyfluffy.com/admin.jsp
 
-JavaDoc can be found at http://findmyfluffy.appspot.com/doc/index.html
+JavaDoc can be found at http://findmyfluffy.com/doc/index.html
 
 Video demo can be found at 
 
