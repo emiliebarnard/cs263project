@@ -6,8 +6,26 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
+
+/**
+ * AddCat Class
+ * 
+ * This class is used to add a cat entity into the datastore.
+ * 
+ * @author emilie (Emilie Menard Barnard) - <a href="mailto:emilie@cs.ucsb.edu">emilie@cs.ucsb.edu</a>
+ * @version 1.0
+ * 
+ */
 public class AddCat{
-	
+
+	/**
+	 * isChipped method.
+	 * 
+	 * This method sets the chip property of the cat so that all entries are uniform.
+	 * 
+	 * @param info The information passed in regarding chip data.
+	 * @return A string, either "true" or "false."
+	 */
 	public String isChipped(String info){
 		if (info == null){
 			return "false";
@@ -19,6 +37,14 @@ public class AddCat{
 			return "false";
 		}
 	}
+	/**
+	 * findBreed method
+	 * 
+	 * This method sets the breed property of the cat so that all entries are uniform.
+	 * 
+	 * @param info The information passed in regarding breed data.
+	 * @return A string containing the breed code.
+	 */
 	public String findBreed(String info){
 		
 		if (info == null) {
@@ -70,6 +96,14 @@ public class AddCat{
 		
 	}
 	
+	/**
+	 * findColor method
+	 * 
+	 * This method sets the color property of the cat so that all entries are uniform.
+	 * 
+	 * @param info The information passed in regarding color data.
+	 * @return A string with the color code.
+	 */
 	public String findColor(String info){
 		if (info == null) {
 			return "";
@@ -121,6 +155,21 @@ public class AddCat{
 		
 	}
 	
+	/**
+	 * addLostCatEntry method
+	 * 
+	 * This method adds a lost cat entity into the datastore.
+	 * 
+	 * @param lostCatName The name data.
+	 * @param lostCatChip The chip data.
+	 * @param lostCatAge The age data.
+	 * @param lostCatSex The sex data.
+	 * @param lostCatBreed The breed data.
+	 * @param lostCatColor The color data.
+	 * @param lostCatArea The area data.
+	 * @param lostCatContactname The contact name data.
+	 * @param lostCatContactemail The contact email data.
+	 */
 	public void addLostCatEntry(String lostCatName, String lostCatChip, String lostCatAge, String lostCatSex, String lostCatBreed, String lostCatColor, String lostCatArea, String lostCatContactname, String lostCatContactemail){
 		 
 		if (lostCatName == null || lostCatName.isEmpty()){
@@ -156,6 +205,21 @@ public class AddCat{
     	DatastoreInfo.datastore.put(lostCat);
 	}
 	
+	/**
+	 * addFoundCatEntry method
+	 * 
+	 * This method adds a found cat entity to the datastore.
+	 * 
+	 * @param foundCatName The name data.
+	 * @param foundCatChip The chip data.
+	 * @param foundCatAge The age data.
+	 * @param foundCatSex The sex data.
+	 * @param foundCatBreed The breed data.
+	 * @param foundCatColor The color data.
+	 * @param foundCatArea The area data.
+	 * @param foundCatContactname The contact name data.
+	 * @param foundCatContactemail The contact email data.
+	 */
 	public void addFoundCatEntry(String foundCatName, String foundCatChip, String foundCatAge, String foundCatSex, String foundCatBreed, String foundCatColor, String foundCatArea, String foundCatContactname, String foundCatContactemail){
 		
 		

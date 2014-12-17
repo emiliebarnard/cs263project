@@ -14,15 +14,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * AddFoundEntryServlet Class
+ * 
+ * This class is a servlet run behind the scenes. It calls a task queue to add a found cat entity into the datastore.
+ * 
+ * @author emilie (Emilie Menard Barnard) - <a href="mailto:emilie@cs.ucsb.edu">emilie@cs.ucsb.edu</a>
+ * @version 1.0
+ * 
+ */
 public class AddFoundEntryServlet extends HttpServlet {
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 			// no get used
 	}	
 	
-  @Override
+  /* (non-Javadoc)
+ * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+ */
+@Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
 

@@ -13,7 +13,15 @@ import java.io.IOException;
 
 import findmyfluffy.findmyfluffy.DatastoreInfo;
 
-// The Worker servlet should be mapped to the "/worker" URL.
+/**
+ * LostCatAdder class
+ * 
+ * This is a servlet class that adds a lost cat entity to the datastore. It's called by UploadLost.
+ * 
+ * @author emilie (Emilie Menard Barnard) - <a href="mailto:emilie@cs.ucsb.edu">emilie@cs.ucsb.edu</a>
+ * @version 1.0
+ *
+ */
 public class LostCatAdder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

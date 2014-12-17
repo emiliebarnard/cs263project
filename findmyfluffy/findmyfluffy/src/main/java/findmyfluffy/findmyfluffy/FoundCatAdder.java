@@ -13,6 +13,15 @@ import java.io.IOException;
 
 import findmyfluffy.findmyfluffy.DatastoreInfo;
 
+/**
+ * FoundCatAdder class
+ * 
+ * This is a servlet class that adds a found cat entity to the datastore. It's called by UploadFound.
+ * 
+ * @author emilie (Emilie Menard Barnard) - <a href="mailto:emilie@cs.ucsb.edu">emilie@cs.ucsb.edu</a>
+ * @version 1.0
+ *
+ */
 public class FoundCatAdder extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
