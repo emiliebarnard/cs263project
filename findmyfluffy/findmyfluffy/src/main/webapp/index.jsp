@@ -170,7 +170,7 @@ window.location.href = "/submit/found/";
     		$.get("matches/lost/?n=" + document.getElementById('lostpetname').value + "&chip=" + $('#chip').prop('checked').toString() + "&age=" + document.getElementById('age').value + "&s=" + $('input:radio[name=sex]:checked').val() + "&b=" + document.getElementById('breed').value + "&c=" + document.getElementById('color').value + "&a=" + document.getElementById('area').value + "&cn=" + document.getElementById('contactname').value + "&ce=" +document.getElementById('contactemail').value, function(data) {
 /* 				alert( "data: " + JSON.stringify(data)); */
 				$( "#page" ).empty();
-				$( "#page" ).append("<h2>potentional matches:</h2>");
+				$( "#page" ).append("<h2>potential matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
 				$( "#page" ).append("<h2>general tips for finding a lost cat:</h2>");
 				$( "#page" ).append( "<p>most importantly: don't lose hope!<br>alert your local animal shelter<br>post lost cat signs (include a recent photo and contact info)<br>alert your closest neighbors<br>search at night with a flashlight<br>leave point of escape open</p>");
@@ -191,7 +191,7 @@ window.location.href = "/submit/found/";
     		 $.get("matches/found/?n=" + document.getElementById('foundpetname').value + "&chip=" + $('#fchip').prop('checked').toString() + "&age=" + document.getElementById('fage').value + "&s=" + $('input:radio[name=fsex]:checked').val() + "&b=" + document.getElementById('fbreed').value + "&c=" + document.getElementById('fcolor').value + "&a=" + document.getElementById('farea').value + "&cn=" + document.getElementById('fcontactname').value + "&ce=" +document.getElementById('fcontactemail').value, function(data) {
 /* 				alert( "data: " + JSON.stringify(data)); */
 				$( "#page" ).empty();
-				$( "#page" ).append("<h2>potentional matches:</h2>");
+				$( "#page" ).append("<h2>potential matches:</h2>");
 				$( "#page" ).append( "<p>" + parseJSONinfo(JSON.stringify(data)) +"</p>" );
 				$( "#page" ).append("<h2>general suggestions for found cats:</h2>");
 				$( "#page" ).append( "<p>check and see if the cat is microchipped<br>check for any tags/collars<br>check with your neighbors</p>" );
