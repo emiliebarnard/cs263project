@@ -1,6 +1,6 @@
 cs263project: Find My Fluffy
 ============
-Project can be found at http://findmyfluffy.com (2017 Update: Please note this link no longer works. However, the google app engine link is still running: http://findmyfluffy.appspot.com)
+Project can be found at http://findmyfluffy.com (2017 Update: Please note this link no longer works. However, the google app engine link is still running for demo purposes: http://findmyfluffy.appspot.com)
 
 Project admin page to upload files can be found at http://findmyfluffy.com/admin.jsp
 
