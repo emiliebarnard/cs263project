@@ -1,6 +1,6 @@
 cs263project: Find My Fluffy
 ============
-Project can be found at http://findmyfluffy.com
+Project can be found at http://findmyfluffy.com (2017 Update: Please note this link no longer works. I am happy to get a link up and running for demo purposes though - just contact me.)
 
 Project admin page to upload files can be found at http://findmyfluffy.com/admin.jsp
 
